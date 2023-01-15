@@ -19,11 +19,11 @@ public:
                 mp[t] ++;
                 int t1 = mp[t];
                 if(t1 > 1) tmp += t1 * (t1-1) / 2 - (t1-1) * (t1-2) / 2;
-                if(tmp >= k) break;
                 j++;
-                cerr << tmp << endl;
+                if(tmp >= k) break;
+                
             }
-            if(tmp >= k) res += nums.size()-1-j;
+            if(tmp >= k) res += nums.size()-j;
         }
         return res;
     }
