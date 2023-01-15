@@ -1,0 +1,5 @@
+tmp = input()
+s = input().split()
+s = list(map(int, s))
+s.sort()
+print(s[-1]-s[0])

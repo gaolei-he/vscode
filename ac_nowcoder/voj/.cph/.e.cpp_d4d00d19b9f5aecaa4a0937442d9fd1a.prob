@@ -1,0 +1,1 @@
+{"name":"Local: e","url":"/home/mechrevo/Documents/vscode/ac_nowcoder/voj/e.cpp","tests":[{"id":1665811611320,"input":"5ff\n1 2 2 1 2","output":"1048575"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/ac_nowcoder/voj/e.cpp","group":"local","local":true}

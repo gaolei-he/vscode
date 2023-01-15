@@ -1,0 +1,1 @@
+{"name":"Local: 4708","url":"/home/mechrevo/Documents/vscode/acwing/周赛/4708.cpp","tests":[{"id":1666437602451,"input":"3 3 3\n\n.#.\n###\n##.\n\n.##\n###\n##.\n\n...\n...\n...\n\n1 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/acwing/周赛/4708.cpp","group":"local","local":true}

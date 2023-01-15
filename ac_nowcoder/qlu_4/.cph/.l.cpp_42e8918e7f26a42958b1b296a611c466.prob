@@ -1,0 +1,1 @@
+{"name":"Local: l","url":"/home/mechrevo/Documents/vscode/ac_nowcoder/qlu_4/l.cpp","tests":[{"id":1667021457878,"input":"2 23 12 62 5 2\n06:03:60 06:04:21\n06:04:26 06:05:19","output":"178"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/ac_nowcoder/qlu_4/l.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: m","url":"/home/mechrevo/Documents/vscode/ac_nowcoder/jmu_9/m.cpp","tests":[{"id":1666770563854,"input":"8 3\nabababab\n0 1\n2 5 \n0 4","output":"YES\nYES\nNO"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/ac_nowcoder/jmu_9/m.cpp","group":"local","local":true}

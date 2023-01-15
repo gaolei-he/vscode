@@ -1,0 +1,1 @@
+list(filter(lambda x : print(chr(ord(x)-32), end='') if x.islower() else (lambda x : print(chr(ord(x)+32), end='') if x.isupper() else print(x, end=''))(x), list(input())))

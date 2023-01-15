@@ -1,0 +1,1 @@
+{"name":"Local: NC235622","url":"/home/mechrevo/Documents/vscode/ac_nowcoder/题库/NC235622.cpp","tests":[{"id":1673092179758,"input":"6\nM 1 3\nM 2 4\nC 3\nC 2\nM 4 5\nC 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/ac_nowcoder/题库/NC235622.cpp","group":"local","local":true}

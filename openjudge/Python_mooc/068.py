@@ -1,0 +1,1 @@
+(lambda x : print('yes') if x == x[-1::-1] else print('no'))(input())

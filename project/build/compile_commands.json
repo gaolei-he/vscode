@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/home/mechrevo/Documents/project/build",
+  "command": "g++  -I/home/mechrevo/Documents/project/include -g -o CMakeFiles/mybc.dir/src/calc.cpp.o -c /home/mechrevo/Documents/project/src/calc.cpp",
+  "file": "/home/mechrevo/Documents/project/src/calc.cpp"
+},
+{
+  "directory": "/home/mechrevo/Documents/project/build",
+  "command": "g++  -I/home/mechrevo/Documents/project/include -g -o CMakeFiles/mybc.dir/src/input.cpp.o -c /home/mechrevo/Documents/project/src/input.cpp",
+  "file": "/home/mechrevo/Documents/project/src/input.cpp"
+},
+{
+  "directory": "/home/mechrevo/Documents/project/build",
+  "command": "g++  -I/home/mechrevo/Documents/project/include -g -o CMakeFiles/mybc.dir/src/main.cpp.o -c /home/mechrevo/Documents/project/src/main.cpp",
+  "file": "/home/mechrevo/Documents/project/src/main.cpp"
+},
+{
+  "directory": "/home/mechrevo/Documents/project/build",
+  "command": "g++  -I/home/mechrevo/Documents/project/include -g -o CMakeFiles/mybc.dir/src/myint.cpp.o -c /home/mechrevo/Documents/project/src/myint.cpp",
+  "file": "/home/mechrevo/Documents/project/src/myint.cpp"
+},
+{
+  "directory": "/home/mechrevo/Documents/project/build",
+  "command": "g++  -I/home/mechrevo/Documents/project/include -g -o CMakeFiles/mybc.dir/src/output.cpp.o -c /home/mechrevo/Documents/project/src/output.cpp",
+  "file": "/home/mechrevo/Documents/project/src/output.cpp"
+},
+{
+  "directory": "/home/mechrevo/Documents/project/build",
+  "command": "g++  -I/home/mechrevo/Documents/project/include -g -o CMakeFiles/mybc.dir/src/version.cpp.o -c /home/mechrevo/Documents/project/src/version.cpp",
+  "file": "/home/mechrevo/Documents/project/src/version.cpp"
+}
+]

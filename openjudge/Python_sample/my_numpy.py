@@ -1,0 +1,10 @@
+import numpy as np
+print(np.array([1, 2, 3]))
+print(np.arange(1, 9, 2))
+print(np.linspace(1, 10, 4))
+print(np.random.randint(10, 20, [2, 3]))
+print(np.random.randint(10, 20, 5))
+a = np.zeros(3)
+print(a)
+print(list(a))
+a = np.zeros((2, 3), dtype=int)

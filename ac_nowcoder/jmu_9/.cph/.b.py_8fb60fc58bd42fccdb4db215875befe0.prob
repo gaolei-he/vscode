@@ -1,0 +1,1 @@
+{"name":"Local: b","url":"/home/mechrevo/Documents/vscode/ac_nowcoder/jmu_9/b.py","tests":[{"id":1666795177799,"input":"3\n1 1\n4 5\n1 4","output":"0\n75\n0"},{"id":1666795425965,"input":"1\n3 3","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/ac_nowcoder/jmu_9/b.py","group":"local","local":true}
