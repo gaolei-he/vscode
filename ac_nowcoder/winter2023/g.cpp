@@ -37,49 +37,52 @@ int f(int k)
 int sm = 0;
 
 int a[N];
-struct Node
-{
-    int last, index, next;
-}node[N];
-void del(int l, int r, int k)
-{
-    for(;l<=r;)
-    {
-        int t = k;
-        while(t--)
-        {
-            if(a[l] == 99 || a[l] == 100) break;
-            sm -= a[l];
-            a[l] = f(a[l]);
-            sm += a[l];
-        }
-        if(a[l] == 99 || a[l] == 100)
-        {
-            node[node[l].last].next = node[l].next;
-        }
-        l = node[l].next;
-    }
-}
+
 void solve()
 {
     int n, m; cin >> n >> m;
+    set<int> st;
+    rep(i, 1, n) st.insert(i);
     rep(i, 1, n)
     {
         cin >> a[i];
         sm += a[i];
     }
-    rep(i, 1, n) node[i] = {i-1, i, i+1};
+    int op;
     rep(i, 1, m)
     {
-        int op; cin >> op;
+        cin >> op;
         if(op == 2) cout << sm << endl;
         else
         {
             int l, r, k;
             cin >> l >> r >> k;
-            del(l, r, k);
+            auto it = st.lower_bound(l);
+            vector<int> vec;
+            for(;;++it )
+            {
+                if((*it)>r || it == st.end()) break;
+                int t = *it;
+                int tmp = k;
+                bool flag = false;
+                while(tmp--)
+                {
+                    sm -= a[t];
+                    a[t] = f(a[t]);
+                    sm += a[t];
+                    if(a[t] == 0 || a[t] == 99 || a[t] == 100)
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+                if(flag) vec.push_back(*it);
+            }
+            for(auto i:vec) st.erase(i);
+
         }
     }
+    
 }
 signed main()
 {

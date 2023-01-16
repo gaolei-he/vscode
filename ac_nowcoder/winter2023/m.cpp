@@ -29,73 +29,17 @@ using PII = pair<int, int>;
 using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
-const int N = 10 + 2e5, mod = 1e9 + 7;
-class A
-{
-public:
-    int a, b;
-    A(int a, int b)
-    {
-        this->a = a;
-        this->b = b;
-    }
-    bool operator<(A& t)
-    {
-        double t1 = a * 1.0 / b;
-        double t2 = t.a * 1.0 / t.b;
-        return t1 < t2;
-    }
-    long double val()
-    {
-        return a * 1.0 / b;
-    }
-    A operator+(A& t)
-    {
-        int fenmu = this->b * t.b;
-        int fenzi = this->b * t.a + this->a * t.b;
-        int tmp = __gcd(fenmu, fenzi);
-        fenzi /= tmp, fenmu /= tmp;
-        return A(fenzi, fenmu);
-    }
-};
+const int N = 510, mod = 1e9 + 7;
+long double dp[N][N];
 void solve()
 {
     int n, m;
     cin >> n >> m;
-    long double ans = 0;
-    long double t = 1.0;
-    vector<A> tmp;
-    if(n >= m) rep(i, 1, m) ans += t / i;
-    else
-    {
-        rep(i, 1, m) tmp.push_back(A(1, i));
-        int k = m - n;
-        while(tmp.size())
-        {
-            A t1 = tmp.back();
-            tmp.pop_back();
-
-            if(!k)
-            {
-                ans += t1.val();
-                continue;
-            }
-            A t2 = tmp.back();
-            tmp.pop_back();
-            t1 = t1 + t2;
-            k --;
-            while(k && t1 < tmp[tmp.size()-2])
-            {
-                t2 = tmp.back();
-                tmp.pop_back();
-                t1 = t1 + t2;
-                k --;
-            }
-            ans += t1.val();
-        }
-    }
-    
-    cout << fixed << setprecision(10) << ans << endl;
+    rep(i, 1, n)
+        rep(j, 1, m)
+            rep(k, 0, j)
+                dp[i][j] = max(dp[i][j], dp[i-1][j-k] + k * 1.0 / (m - j + k));
+    cout << fixed << setprecision(10) << dp[n][m];
 }
 signed main()
 {
