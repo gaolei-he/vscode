@@ -1,10 +1,9 @@
 #include <iostream>
 #include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 int main()
 {
-    vector<bool> vec;
-    for(int i=0;i<100;i++) vec.push_back(true);
-    cout << sizeof(vec);
+    cout << pow(1, 10);
     return 0;
 }

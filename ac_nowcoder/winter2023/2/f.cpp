@@ -19,7 +19,6 @@
 #define linf 0x3f3f3f3f3f3f3f3fll
 #define endl '\n'
 #define ll long long
-#define int long long
 #define ull unsigned long long
 #define SZ(x) (int)x.size()
 #define rep(i, a, n) for (int i = (a); i <= (n); i++)
@@ -30,112 +29,49 @@ using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
 const int N = 10 + 5e5, mod = 1e9 + 7;
-bool a[N][4];
-int solve()
+bool a[N][5], vis1[N][5], vis2[N][5];
+void solve()
 {
     int n, k;
-    memset(a, 0, sizeof(a));
     cin >> n >> k;
+    rep(i, 1, n)
+        rep(j, 1, 3)
+            a[i][j] = vis1[i][j] = vis2[i][j] = 0;
     rep(i, 1, k)
     {
         int x, y; cin >> x >> y;
         if(a[x][y]) a[x][y] = false;
         else a[x][y] = true;
     }
-    int ml = 1e9, mr = 0;
-    rep(i, 1, n)
-        if(a[i][1])
-        {
-            ml = i;
-            break;
-        }
-    
-    dec(i, n, 1)
-        if(a[i][3])
-        {
-            mr = i;
-            break;
-        }
+    queue<PII> q;
+    q.push({1, 1});
+    while(q.size())
+    {
+        int x = q.front().first, y = q.front().second;
+        q.pop();
+        if(x > n || y > 3 || a[x][y] || vis1[x][y]) continue;
+        vis1[x][y] = true;
+        q.push({x+1, y});
+        q.push({x, y+1});
+    }
+    q.push({n, 3});
+
+    while(q.size())
+    {
+        int x = q.front().first, y = q.front().second;
+        q.pop();
+        if(x < 1 || y < 1 || a[x][y] || vis2[x][y]) continue;
+        vis2[x][y] = true;
+        q.push({x, y-1});
+        q.push({x-1, y});
+    }
+    // cerr << "#\n";
+
     int ans = 0;
-    if(ml && mr && ml < mr)
-    {
-        rep(i, ml, mr) if(a[i][2]) return 1;
-        ans += ml - 1;
-        ans += n - mr;
-        rep(i, mr, n)
-        {
-            if(a[i][2]) break;
-            ans ++;
-        }
-        dec(i, ml, 1)
-        {
-            if(a[i][2]) break;
-            ans ++;
-        }
-        return ans;
-    }
-    else if(ml && mr && ml == mr)
-    {
-        if(a[ml][2] || a[ml+1][2] || a[ml-1][2]) return 1;
-        ans += ml - 1;
-        ans += n - mr;
-        rep(i, ml, n)
-            if(!a[i][2]) ans ++;
-            else break;
-        dec(i, ml, 1)
-            if(!a[i][2]) ans ++;
-            else break;
-        return ans;
-    }
-    else if(ml && mr && ml > mr)
-    {
-        bool ok = true;
-        rep(i, mr+1, ml-1) if(!a[i][2]) ok = false, ans ++;
-        if(ok && a[mr][2]) return 1;
-        if(!a[ml-1][2] && a[ml][2]) ans ++;
-        if(!a[mr+1][2] && a[mr][2]) ans ++;
-        dec(i, ml-1, 1) if(!a[i][2]) {ans += i; break; }
-        rep(i, mr+1, n) if(!a[i][2]) {ans += n - i; break;}
-        return ans;
-
-    }
-    else if(ml)
-    {
-        rep(i, 1, n)
-            if(!a[i][2] && i >= ml) return 1;
-            else if(!a[i][2]) { ans += n - i + 1; break; }//r
-        dec(i, ml-1, 1) if(!a[i][2]) {ans += i; break; }// l
-        rep(i, 1, ml - 1) if(!a[i][2]) ans ++;// m u
-        rep(i, ml, n)
-            if(!a[i][2]) ans ++;//m d
-            else break;
-    }
-    else if(mr)
-    {
-        dec(i, n, 1)
-            if(!a[i][2] && i > mr) {ans += i; break; } // l
-            else if(!a[i][2] && i <= mr) return 1;
-        
-        rep(i, mr+1, n)
-            if(!a[i][2]) {ans += n - i + 1; break;} // r
-        
-        rep(i, mr+1, n) if(!a[i][2]) ans ++; //m d;
-        if(a[mr+1][2]) return ans;
-        dec(i, mr, 1)
-            if(!a[i][2]) ans ++;
-            else break;
-        return ans;
-    }
-    else
-    {
-        rep(i, 1, n) if(!a[i][2]) {ans += n - i + 1; break; }// r
-        dec(i, n, 1) if(!a[i][2]) {ans += i; break;} // l
-        if(ans == 0) return 1;
-        rep(i, 1, n) if(!a[i][2]) ans ++;
-        return ans;
-    }
-    return 1;
-
+    rep(i, 1, n)
+        rep(j, 1, 3)
+            if(vis1[i][j] && vis2[i][j] && i + j != 2) ans ++;
+    cout << ans << endl;
 }
 signed main()
 {
@@ -144,7 +80,7 @@ signed main()
     cout.tie(0);
     int t; cin >> t;
     while(t--)
-        cout << solve() - 1 << endl;
+        solve();
 
     return 0;
 }

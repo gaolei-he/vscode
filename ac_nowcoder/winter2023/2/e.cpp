@@ -5,37 +5,40 @@
 #define int long long
 using namespace std;
 int n, l, r;
-
+double g(int i)
+{
+    return n * 1.0 / i + i - 1;
+}
 int f(int i)
 {
     return n / i + i -1;
 }
-bool check(int mid, int l, int r)
-{
-    int k = f(mid);
-    if(mid -1 >= l && k == f(mid-1) || mid + 1 <= r && k == f(mid+1)) return 0;
-    if(mid - 1 >= l && f(mid-1) < k) return 1;
-    if(mid == l && mid + 1 <= r && f(mid+1) > k) return 1;
-    return 0;
-}
-int solve()
+const double eps = 1e-5;
+void solve()
 {
     cin >> n >> l >> r;
-    if(l == r) return l;
-    else if(f(l) < f(l+1)) return l;
-    l = sqrt(n);
-    rep(i, l, r)
+    int pos = l;
+    if(f(r) < f(l)) pos = r;
+    int x = sqrt(n);
+    if(l <= x && r >= x && f(x) < f(pos)) pos = x;
+    x ++;
+    if(l <= x && r >= x && f(x) < f(pos)) pos = x;
+    r = pos;
+    while(l < r)
     {
-        if(f(i) < f(i+2) || f(i) == f(i+2)) return i;
+        int mid = l + r >>  1;
+        if(f(mid) > f(pos)) l = mid + 1;
+        else r = mid;
     }
-
-    return 0;
+    cout << l << endl;
 }
 signed main()
 {
+    // n = 8;
+    // rep(i, 1, 10) cout << f(i) << ' ';
     int t; cin >> t;
     while(t --)
-        cout << solve() << endl;
+        solve();
 
     return 0;
 }
