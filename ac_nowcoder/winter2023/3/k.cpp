@@ -30,9 +30,43 @@ using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
 const int N = 10 + 2e5, mod = 1e9 + 7;
+int a[N];
+int qp(int a, int b, int p = mod)
+{
+    int res = 1 % p;
+    while(b)
+    {
+        if(b & 1) res = res * a % p;
+        b >>= 1;
+        a = a * a % p;
+    }
+    return res;
+}
+int inv(int a, int p = mod)
+{
+    return qp(a, p - 2);
+}
 void solve()
 {
-    
+    int n; cin >> n;
+    rep(i, 1, n)
+    {
+        int x; cin >> x;
+        a[1] ++;
+        a[x + 1] --;
+    } 
+    rep(i, 1, N-5) a[i] += a[i-1];
+    int lst = 1, ans = 0;
+    rep(i, 1, N)
+    {
+        if(!a[i]) break;
+        int q = (i+1)*inv(i) % mod;
+        int a1 = lst * q % mod;
+        ans = ans + (1 - qp(q, a[i]) + mod) % mod * inv((1-q+mod) % mod) % mod * a1 % mod;
+        ans %= mod;
+        lst = a1 * qp(q, a[i]-1) % mod;
+    }
+    cout << ans << endl;
 }
 signed main()
 {
@@ -45,14 +79,3 @@ signed main()
 
     return 0;
 }
-/* simple mode
-#include <iostream>
-#define rep(i, a, n) for(int i=(a);i<=(n);i++)
-#define dec(i, n, a) for(int i=(n);i>=(a);i--)
-using namespace std;
-int main()
-{
-
-    return 0;
-}
-*/

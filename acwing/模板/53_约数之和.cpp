@@ -9,7 +9,7 @@ int main()
 {
     unordered_map<int,int> pr;
 
-    int n;
+    ll n;
     cin>>n;
     while(n--)
     {

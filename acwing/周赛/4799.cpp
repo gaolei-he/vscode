@@ -29,10 +29,40 @@ using pii = pair<int, int>;
 using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
-const int N = 10 + 2e5, mod = 1e9 + 7;
+const int N = 10 + 1e5, mod = 1e9 + 7;
+bool st[N];
 void solve()
 {
-    
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> vec(n+1);
+    rep(i, 1, m)
+    {
+        int a, b; cin >> a >> b;
+        vec[a].push_back(b);
+        vec[b].push_back(a);
+    }
+    int a = 0, b = 0, ansa = 0, ansb = 0;
+    function<void(int, int, int)> dfs = [&](int v, int op, int cnt) {
+        for(auto& e:vec[v])
+            if(vec[e].size() == 1)
+            {
+                if(op == 1 && cnt > ansb) ansb = cnt;
+                else if(op == 0 && cnt > ansa) a = e, ansa = cnt;
+            }
+            else if(!st[e])
+            {
+                st[e] = true;
+                dfs(e, op, cnt+1);
+                st[e] = false;
+            }
+    };
+    st[1] = true;
+    dfs(1, 0, 1);
+    st[1] = false;
+    st[a] = true;
+    dfs(a, 1, 1);
+    cout << ansb << endl;
 }
 signed main()
 {

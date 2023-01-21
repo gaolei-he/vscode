@@ -25,14 +25,27 @@
 #define rep(i, a, n) for (int i = (a); i <= (n); i++)
 #define dec(i, n, a) for (int i = (n); i >= (a); i--)
 using namespace std;
-using pii = pair<int, int>;
+using PII = pair<int, int>;
 using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
-const int N = 10 + 2e5, mod = 1e9 + 7;
+const int N = 10 + 1e5, mod = 1e9 + 7;
+int a[N];
 void solve()
 {
-    
+    int n; cin >> n;
+    rep(i, 1, n) cin >> a[i];
+    rep(i, 1, n)
+    {
+        int x = a[i];
+        if(x < 0) continue;
+        while(x%2==0) x /= 2;
+        a[i] = x;
+    }
+    int sm = 0;
+    rep(i, 1, n) sm += a[i];
+    cout << sm << endl;
+
 }
 signed main()
 {
@@ -45,14 +58,3 @@ signed main()
 
     return 0;
 }
-/* simple mode
-#include <iostream>
-#define rep(i, a, n) for(int i=(a);i<=(n);i++)
-#define dec(i, n, a) for(int i=(n);i>=(a);i--)
-using namespace std;
-int main()
-{
-
-    return 0;
-}
-*/
