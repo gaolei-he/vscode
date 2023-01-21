@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#define int long long
 #define rep(i, a, n) for(int i=(a);i<=(n);i++)
 #define dec(i, n, a) for(int i=(n);i>=(a);i--)
 using namespace std;
@@ -21,7 +22,7 @@ bool check(int k)
     return true;
 
 }
-int main()
+signed main()
 {
     cin >> n >> m;
     rep(i, 1, n) cin >> a[i];
