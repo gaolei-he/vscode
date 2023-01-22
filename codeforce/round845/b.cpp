@@ -27,30 +27,31 @@
 using namespace std;
 using pii = pair<int, int>;
 using ar2 = array<int, 2>;
+mt19937 mrand(random_device{}());
+int rnd(int x) { return mrand() % x; }
 const int N = 10 + 1e5, mod = 1e9 + 7;
+int ans[N], fact[N];
 void solve()
 {
+    int n;
+    cin >> n;
     
+    cout << ans[n] << endl;
 }
 signed main()
 {
+    fact[1] = 1;
+    rep(i, 2, N-6) fact[i] = fact[i-1] * i % mod;
+    rep(i, 2, N-6)
+    {
+        ans[i] = fact[i] * i % mod * (i - 1) % mod;
+    }
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    // int t; cin >> t;
-    // while(t--)
+    int t; cin >> t;
+    while(t--)
         solve();
 
     return 0;
 }
-/* simple mode
-#include <iostream>
-#define rep(i, a, n) for(int i=(a);i<=(n);i++)
-#define dec(i, n, a) for(int i=(n);i>=(a);i--)
-using namespace std;
-int main()
-{
-
-    return 0;
-}
-*/
