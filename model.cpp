@@ -43,14 +43,3 @@ signed main()
 
     return 0;
 }
-/* simple mode
-#include <iostream>
-#define rep(i, a, n) for(int i=(a);i<=(n);i++)
-#define dec(i, n, a) for(int i=(n);i>=(a);i--)
-using namespace std;
-int main()
-{
-
-    return 0;
-}
-*/
