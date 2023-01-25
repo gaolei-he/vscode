@@ -59,7 +59,6 @@ void solve()
     };
     dfs(1);
     rep(i, 1, n) dep[i] ++;
-    rep(i, 1, n) cerr << dep[i] << ' ';
     int ans = 0;
     rep(i, 1, n) ans = (dep[i] + ans) % mod;
     rep(i, 1, n-1) ans = ans * 2 % mod;
