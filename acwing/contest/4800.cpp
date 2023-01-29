@@ -27,12 +27,26 @@
 using namespace std;
 using pii = pair<int, int>;
 using ar2 = array<int, 2>;
-mt19937 mrand(random_device{}());
-int rnd(int x) { return mrand() % x; }
 const int N = 10 + 1e5, mod = 1e9 + 7;
+bool check(int x)
+{
+    vector<int> v1, v2;
+    while(x) v1.push_back(x%10), x /= 10;
+    set<int> st;
+    for(auto i:v1) st.insert(i);
+    return st.size() == v1.size();
+}
 void solve()
 {
-    
+    int x; cin >> x;
+    rep(i, x+1, N)
+    {
+        if(check(i))
+        {
+            cout << i << endl;
+            return;
+        }
+    }
 }
 signed main()
 {

@@ -27,12 +27,10 @@
 using namespace std;
 using pii = pair<int, int>;
 using ar2 = array<int, 2>;
-mt19937 mrand(random_device{}());
-int rnd(int x) { return mrand() % x; }
 const int N = 10 + 1e5, mod = 1e9 + 7;
 void solve()
 {
-    
+    int n; 
 }
 signed main()
 {
