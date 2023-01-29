@@ -71,25 +71,35 @@ void f()
     {
         if(ask(d, e) == '>') swap(d, e);
         if(ask(b, d) == '<')
-            {if(ask(b, c) == '<')
+            if(ask(b, c) == '<')
                 cout << "! " << a << b << c << d << e << endl;
             else
-                cout << "! " << a << c << b << d << e << endl;}
+            cout << "! " << a << c << b << d << e << endl;
         else
-            {if(ask(b, e) == '>')
+            if(ask(b, e) == '>')
                 cout << "! " << a << c << d << e << b << endl;
             else
-                cout << "! " << a << c << d << b << e << endl;}
+                cout << "! " << a << c << d << b << e << endl;
     }
     else
     {
-        if(ask(a, e) == '>') swap(a, e);
-            {if(ask(b, c) == '<')
-                cout << "! " << a << e << b << c << d << endl;
-            else if(ask(b, d) == '<')
-                cout << "! " << a << e << c << b << d << endl;
+        if(ask(a, e) == '>')
+            if(ask(b, c) == '<')
+                cout << "! " << e << a << b << c << d << endl;
+            else if(ask(b ,d) == '<')
+                cout << "! " << e << a << c << b << d << endl;
             else
-                cout << "! " << a << e << c << d << b << endl;}
+                cout << "! " << e << a << c << d << b << endl;
+        else
+            if(ask(b, c) == '>')
+                if(ask(b, d) == '>')
+                    cout << "! " << a << e << c << d << b << endl;
+                else
+                    cout << "! " << a << e << c << b << d << endl;
+            else if(ask(b, e) == '<')
+                cout << "! " << a << b << e << c << d << endl;
+            else
+                cout << "! " << a << e << b << c << d << endl;
     }
 }
 void solve()
