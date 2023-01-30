@@ -1,9 +1,2 @@
-There is only one way to start this process (and for nearly all of your decisions of what to compare in later steps, there is only one correct one). Here's how to figure it out. First, note that there are $2^7 =128$ possible answers you can get for your comparisons, and $5! = 120$ different permutations you need to distinguish between.
-
-The first comparison is easy: you have to compare two keys, and since you don't know anything about them, all choices are equally good. So let's say you compare $a$ and $b$, and find that $a \leq b$. You now have $2^6 = 64$ possible answers left, and $60$ possible permutations remaining (since we have eliminated half of them).
-
-Next, we can either compare $c$ and $d$, or we can compare $c$ to one of the keys we used in the first comparison. If we compare $c$ and $d$, and learn that $c \leq d$, then we have $32$ remaining answers and $30$ possible permutations. On the other hand, if we compare $c$ with $a$, and we discover that $a \leq c$, we have $40$ possible permutations remaining, because we have eliminated $1/3$ of the possible permutations (those with $c \leq a \leq b$). We only have $32$ possible remaining answers, so we're out of luck.
-
-So now we know that we have to compare the first and second keys, and the third and fourth keys. We can assume that we have $a\leq b$ and $c \leq d$. If we compare $e$ to any of these four keys, by the same argument we used in the previous step, we might only eliminate $1/3$ of the permutations remaining, and we're out of luck. So we have to compare two of the keys $a,b,c,d$. Taking into account symmetry, we have two choices, compare $a$ and $c$ or compare $a$ and $d$. A similar counting argument shows we must compare $a$ and $c$. We can assume without loss of generality that $a \leq c$, and now we have $a \leq b$ and $a \leq c \leq d$.
-
-Since you asked for a hint, I won't go through the rest of the argument. You have four comparisons left. Use them wisely.
+$Code$
+$$1 \le x \le n10^5$$
