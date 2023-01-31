@@ -30,11 +30,11 @@ using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
 const int N = 10 + 1e5, mod = 1e9 + 7;
-int a[] = {1, 3, 2};
+int a[] = {1, 1, 4, 5, 1, 4};
 void solve()
 {
     int n; cin >> n;
-    rep(i, 0, n-1) cout << a[i % 3] << ' ';
+    rep(i, 0, n-1) cout << a[i % 6] << ' ';
 }
 signed main()
 {

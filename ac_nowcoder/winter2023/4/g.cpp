@@ -31,33 +31,34 @@ mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
 const int N = 10 + 8e2, mod = 1e9 + 7;
 char str[N][N];
+int dis[N][N];
 bool st[N][N];
-string f(int x, int y)
-{
-    string s;
-    while(x) s.push_back(x%10+'0'), x /= 10;
-    s.push_back(' ');
-    while(y) s.push_back(y%10+'0'), y /= 10;
-    return s;
-}
-void g(int& x, int& y, string ans)
-{
-    x = 0;
-    y = 0;
-    while(ans.back() != ' ')
-    {
-        y *= 10;
-        y += ans.back() - '0';
-        ans.pop_back();
-    }
-    ans.pop_back();
-    while(ans.size())
-    {
-        x *= 10;
-        x += ans.back() - '0';
-        ans.pop_back();
-    }
-}
+// string f(int x, int y)
+// {
+//     string s;
+//     while(x) s.push_back(x%10+'0'), x /= 10;
+//     s.push_back(' ');
+//     while(y) s.push_back(y%10+'0'), y /= 10;
+//     return s;
+// }
+// void g(int& x, int& y, string ans)
+// {
+//     x = 0;
+//     y = 0;
+//     while(ans.back() != ' ')
+//     {
+//         y *= 10;
+//         y += ans.back() - '0';
+//         ans.pop_back();
+//     }
+//     ans.pop_back();
+//     while(ans.size())
+//     {
+//         x *= 10;
+//         x += ans.back() - '0';
+//         ans.pop_back();
+//     }
+// }
 void solve()
 {
     int n, m, xs, ys, q;
@@ -66,42 +67,31 @@ void solve()
     rep(i, 1, n) cin >> str[i] + 1;
     int dx[] = {0, -1, 0, 1};
     int dy[] = {-1, 0, 1, 0};
-    vector<set<string>> vec;
-    vec.push_back({f(xs, ys)});
-    set<string> total;
-    bool flag = false;
-    auto func = [&]()
+    queue<pii> que;
+    que.push({xs, ys});
+    dis[xs][ys] = 0;
+    while(que.size())
     {
-        set<string> st1;
-        int val = total.size();
-        for(auto tmp:vec[vec.size()-1])
+        pii t = que.front();
+        int x = t.first, y = t.second;
+        que.pop();
+        rep(i, 0, 3)
         {
-            int x, y;
-            g(x, y, tmp);
-            rep(i, 0, 3)
-            {
-                int tx = x + dx[i], ty = y + dy[i];
-                if(tx < 1 || ty < 1 || tx > n || ty > m || str[tx][ty] == '#') continue;
-                st1.insert(f(tx, ty));
-                total.insert(f(tx, ty));
-            }
-            st1.insert(f(x, y));
-            total.insert(f(x, y));
+            int tx = x + dx[i], ty = y + dy[i];
+            if(tx < 1 || ty < 1 || tx > n || ty > m || str[tx][ty] == '#') continue;
+            if(dis[tx][ty]) continue;
+            dis[tx][ty] = dis[x][y] + 1;
+            que.push({tx, ty});
         }
-        
-        vec.push_back(st1);
-        if(val == total.size())
-            flag = true;
-    };
+    }
     while(q --)
     {
         int xt, yt;
-        bool res = true;
         cin >> xt >> yt;
         xt ++, yt ++;
-        rep(i, 1, mod)
+        bool flag = true;
+        rep(i, 1, n*m)
         {
-            if(i >= vec.size() - 1) func();
             switch (str[xt][yt])
             {
             case 'L':if(str[xt][yt-1] != '#') yt --; break;
@@ -110,16 +100,14 @@ void solve()
             case 'D':if(str[xt+1][yt] != '#') xt ++; break;
             default: break;
             }
-            if(vec[i].count(f(xt, yt)))
+            if(dis[xt][yt] && dis[xt][yt] <= i || xt == xs && yt == ys)//qcjj走到了商场入口
             {
                 cout << i << endl;
-                res = false;
+                flag = false;
                 break;
             }
-            if(flag) break;
         }
-        if(res) cout << -1 << endl;
-
+        if(flag) cout << -1 << endl;
     }
 }
 signed main()

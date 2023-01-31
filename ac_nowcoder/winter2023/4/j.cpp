@@ -30,50 +30,36 @@ using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
 const int N = 10 + 1e5, mod = 1e9 + 7;
-int c[N], b[N], a[N];
+int ans[N];
 void solve()
 {
     int n, m;
     cin >> n >> m;
-    rep(i, 0, n-1) cin >> c[i];
-    
-    rep(i, 0, n/2-1)
+    vector<vector<int>> gz(n+1), gf(n+1);
+    rep(i, 1, m)
     {
-        if(abs(c[i] - c[n-1-i]) % 2 == 0)
-        {
-            a[n-i-1] = a[i] = (c[i] + c[n-1-i]) / 2;
-            b[i] = a[i] - c[i];
-            b[n-i-1] = -b[i];
-        }
-        else
-        {
-            a[n-i-1] = a[i] = (m + c[i] + c[n-1-i]) / 2;
-            b[i] = a[i] - c[i];
-            b[n-i-1] = -b[i];
-        }
-        if((a[i] + b[i]) % m != c[i]) swap(b[i], b[n-i-1]);
+        int x, y; cin >> x >> y;
+        gz[x].push_back(y);
+        gf[y].push_back(x);
     }
-    if(m == 2)
+    bool vis[n+1];
+    function<void(vector<vector<int>>&, int)> dfs = [&](vector<vector<int>>& g, int st) {
+        vis[st] = true;
+        for(auto i:g[st]) if(!vis[i]) dfs(g, i);
+    };
+    memset(ans, -1, sizeof(ans));
+    rep(i, 1, n)
     {
-        rep(i, 0, n/2-1)
-        {
-            if(c[i] != c[n-1-i])
-            {
-                cout << "NO\n";
-                return;
-            }
-            a[i] = c[i];
-            a[n-i-1] = c[i];
-        }
+        memset(vis, 0, sizeof(vis));
+        dfs(gz, i);
+        int v1 = 0, v2 = 0;
+        rep(i, 1, n) if(vis[i]) v1 ++;
+        memset(vis, 0, sizeof(vis));
+        dfs(gf, i);
+        rep(i, 1, n) if(vis[i]) v2 ++;
+        if(v1 + v2 == n + 1) ans[v2] = i;
     }
-    if(n & 1)
-    {
-        b[n/2] = 0;
-        a[n/2] = c[n/2];
-    }
-    cout << "YES\n";
-    rep(i, 0, n-1) cout << (a[i] % m + m) % m << (i == n - 1 ? "\n" : " ");
-    rep(i, 0, n-1) cout << (b[i] % m + m) % m << (i == n - 1 ? "\n" : " ");
+    rep(i, 1, n) cout << ans[i] << (i == n ? "\n" : " ");
 }
 signed main()
 {

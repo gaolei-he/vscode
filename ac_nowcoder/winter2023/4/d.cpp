@@ -29,22 +29,45 @@ using pii = pair<int, int>;
 using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
-const int N = 10 + 1e2, mod = 1e9 + 7;
-int f[N], w[N], v[N];
+const int N = 10 + 5e3, mod = 1e9 + 7;
+int w[N], v[N];
+int dpz[N][N], dpf[N][N];
+int n, m;
+int mxz[N], mxf[N];
+void work(int dp[N][N])
+{
+    rep(i, 1, n)
+        rep(j, 0, m)
+        {
+            dp[i][j] = dp[i-1][j];
+            if(j>=w[i]) dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i]] + v[i]);
+        }
+}
 void solve()
 {
-    int n, m; cin >> n >> m;
+    cin >> n >> m;
     rep(i, 1, n) cin >> w[i] >> v[i];
-    rep(i, 1, n)
-        dec(j, m, w[i])
-            f[j] = max(f[j], f[j-w[i]]+v[i]);
-    int sm = f[m];
+    work(dpz);
+    reverse(w+1, w+n+1);
+    reverse(v+1, v+n+1);
+    work(dpf);
+    reverse(w+1, w+n+1);
+    reverse(v+1, v+n+1);
     rep(i, 1, n)
     {
-        if(f[m - w[i]] + v[i] < f[m]) cout << f[m] - f[m-w[i]] - v[i] + 1 << endl;
-        else cout << 0 << endl;
+        int vmx = 0, vmxi = 0;
+        memset(mxz, 0, sizeof(mxz));
+        memset(mxf, 0, sizeof(mxf));
+        rep(j, 1, m) mxz[j] = max(mxz[j-1], dpz[i-1][j]);
+        rep(j, 1, m) mxf[j] = max(mxf[j-1], dpf[n-i][j]);
+        rep(j, 0, m)
+        {
+            vmx = max(vmx, mxz[j] + mxf[m-j]);
+            if(m-j-w[i]>=0) vmxi = max(vmxi, mxz[j]+mxf[m-j-w[i]]+v[i]);
+            if(m-j-w[i]>=0) vmxi = max(vmxi, mxf[j]+mxz[m-j-w[i]]+v[i]);
+        }
+        cout << max(vmx - vmxi + 1, 0ll) << endl;
     }
-
 }
 signed main()
 {
