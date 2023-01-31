@@ -42,19 +42,18 @@ void solve()
         else if(a[i] == 1)
         {
             f[i][1] = min(f[i-1][2], f[i-1][0]);
-            f[i][0] = min({f[i-1][0], f[i-1][1], f[i-1][2]}) + 1;
         }
         else if(a[i] == 2)
         {
             f[i][2] = min(f[i-1][1], f[i-1][0]);
-            f[i][0] = min({f[i-1][0], f[i-1][1], f[i-1][2]}) + 1;
         }
         else
         {
-            f[i][0] = min({f[i-1][0], f[i-1][1], f[i-1][2]}) + 1;
             f[i][2] = min(f[i-1][1], f[i-1][0]);
             f[i][1] = min(f[i-1][2], f[i-1][0]);
         }
+        f[i][0] = min({f[i-1][0], f[i-1][1], f[i-1][2]}) + 1;
+
     }
     int ans = mod;
     rep(i, 0, 2) ans = min(ans, f[n][i]);

@@ -54,7 +54,7 @@ void solve()
                 g[i+(j-1)*m].push_back(i+(j-2)*m);
     }
     bool flag = true;
-    bool sta[N];
+    bool sta[n*m+10];
     function<void(int)> dfs = [&](int st) {
         sta[st] = true;
         for(auto i:g[st])
@@ -72,6 +72,7 @@ void solve()
         cout << "NO\n";
         return;
     }
+    cout << "YES\n";
 }
 signed main()
 {
