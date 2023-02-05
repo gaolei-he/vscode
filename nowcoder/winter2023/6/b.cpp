@@ -29,12 +29,57 @@ using pii = pair<int, int>;
 using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
-const int N = 10 + 2e5, mod = 1e9 + 7;
+const int N = 10, mod = 1e9 + 7;
 int a[N];
+vector<unordered_map<int, int>> vec(N);
+vector<pii> v(N, {-1, 0});
+int n, q;
+unordered_map<int, int> mp;
+vector<pii> s;
+
+void f(int x)
+{
+    for(int j=1;j*j<=x;j++)
+    {
+        if(x%j || j == x) continue;
+        if(v[j].first >= 0) v[j].first ++;
+        if(j==1 || j*j==x)continue;
+        if(v[x/j].first >= 0) v[x/j].first++;
+    }
+    if(v[x].first >= 0) v[x].second++;
+    if(v[x].first >= 0) vec[x][v[x].second] = v[x].first + 1;
+    v[x].first++;
+}
 void solve()
 {
-    int n, q; cin >> n >> q;
-    
+    cin >> n >> q;
+    s.push_back({0, 0});
+    rep(i, 1, n)
+    {
+        int x; cin >> x;
+        f(x);
+        if(mp.count(x)) s.push_back({x, ++mp[x]});
+        else s.push_back({x, 0}), mp.insert({x, 0});
+    }
+    while(q--)
+    {
+        int op, x;
+        cin >> op >> x;
+        if(op == 1)
+        {
+            f(x);
+            if(mp.count(x)) s.push_back({x, ++mp[x]});
+            else s.push_back({x, 0}), mp.insert({x, 0});
+        }
+        else
+        {
+            int t = s[x].second;
+            int ans = vec[s[x].first][t];
+            ans = v[s[x].first].first -  ans;
+            cout << ans << endl;
+        }
+
+    }
 }
 signed main()
 {

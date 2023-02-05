@@ -44,11 +44,16 @@ int qp(int a, int b, int p = mod)
 }
 int fact[N], inv[N];
 vector<pii> vec;
-int f(int x, int y)
+void g(int x, int y)
 {
     int a = x - 1;
     int b = y - 1;
     a += b;
+    vec.push_back({a, b});
+}
+map<pii, int> mp;
+int f(int a, int b)
+{
     int res = fact[a] * inv[b] % mod * inv[a-b] % mod;
     for(auto p:vec)
     {
@@ -56,18 +61,18 @@ int f(int x, int y)
         {
             if(b >= p.second && b <= p.second + a - p.first)
             {
-                int tmp = fact[p.first] * inv[p.second] % mod * inv[p.first-p.second] % mod;
-                x = a - p.first;
-                y = b - p.second;
-                tmp = tmp * qp(2, fact[x] * inv[y] % mod * inv[x-y] % mod) % mod;
+                int tmp;
+                if(mp.count(p)) tmp = mp[p];
+                else tmp = fact[p.first] * inv[p.second] % mod * inv[p.first-p.second] % mod;
+                int x = a - p.first;
+                int y = b - p.second;
+                tmp = tmp * fact[x] % mod * inv[y] % mod * inv[x-y] % mod;
                 res = (res - tmp + mod) % mod;
             }
         }
     }
-    vec.push_back({a, b});
-
+    mp[{a, b}] = res;
     return res * qp(2, n-1-a) % mod;
-
 }
 void solve()
 {
@@ -83,8 +88,12 @@ void solve()
     {
         int x, y;
         cin >> x >> y;
-        ans = (ans - f(x, y) + mod) % mod;
+        g(x, y);
     }
+    sort(vec.begin(), vec.end());
+    for(auto p:vec)
+        ans = (ans - f(p.first, p.second) + mod) % mod;
+
     cout << ans << endl;
 }
 signed main()
