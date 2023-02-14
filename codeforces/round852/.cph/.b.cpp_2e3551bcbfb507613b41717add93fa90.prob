@@ -1,0 +1,1 @@
+{"name":"Local: b","url":"/home/mechrevo/Documents/vscode/codeforces/round852/b.cpp","tests":[{"id":1676194575967,"input":"4\n3 -2\n4 -4\n2 -1\n5 -3\n","output":""},{"id":1676195770597,"input":"2\n9 7\n0 -3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/codeforces/round852/b.cpp","group":"local","local":true}

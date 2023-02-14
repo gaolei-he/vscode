@@ -30,44 +30,39 @@ using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
 const int N = 10 + 2e5, mod = 1e9 + 7;
-int a[N], p[N];
-int f(int x)
-{
-    int res = 0;
-    while(x) res += x % 10, x /= 10;
-    return res;
-}
-int find(int x)
-{
-    if(p[x] != x) p[x] = find(p[x]);
-    return p[x];
-}
+int a[N];
 void solve()
 {
-    int n, q; cin >> n >> q;
-    rep(i, 1, n) cin >> a[i];
-    rep(i, 1, n+1) p[i] = i;
-    while(q --)
+    int n; cin >> n;
+    deque<int> q;
+    rep(i, 1, n)
     {
-        int op, l, r, x;
-        cin >> op;
-        if(op == 1)
-        {
-            cin >> l >> r;
-            for(int i=find(l);i<=r;i=(find(i)==i?i+1:find(i)))
-            {
-                a[i] = f(a[i]);
-                if(a[i] < 10) p[i] = i + 1;
-            }
-
-        }
-        else
-        {
-            cin >> x;
-            cout << a[x] << endl;
-        }
+        int x; cin >> x;
+        a[i] = x;
+        q.push_back(x);
     }
-
+    deque<int> q1;
+    rep(i, 1, n) q1.push_back(i);
+    while(q.size())
+    {
+        int cnt = 0;
+        int a = q1.front(), b = q1.back();
+        if(q.front() == a) q.pop_front(), q1.pop_front();
+        else if(q.front() == b) q.pop_front(), q1.pop_back();
+        else cnt ++;
+        if(q.empty()) break;
+        a = q1.front(), b = q1.back();
+        if(q.back() == a) q.pop_back(), q1.pop_front();
+        else if(q.back() == b) q.pop_back(), q1.pop_back();
+        else cnt ++;
+        if(cnt == 2) break;
+    }
+    if(q.empty()) cout << -1 << endl;
+    else
+    {
+        rep(i, 1, n) if(a[i] == q.front()) cout << i << ' ';
+        rep(i, 1, n) if(a[i] == q.back()) cout << i << endl;
+    }
 }
 signed main()
 {

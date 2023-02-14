@@ -30,52 +30,21 @@ using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
 const int N = 10 + 2e5, mod = 1e9 + 7;
-int a[N], p[N];
-int f(int x)
-{
-    int res = 0;
-    while(x) res += x % 10, x /= 10;
-    return res;
-}
-int find(int x)
-{
-    if(p[x] != x) p[x] = find(p[x]);
-    return p[x];
-}
+int p[N], q[N];
 void solve()
 {
-    int n, q; cin >> n >> q;
-    rep(i, 1, n) cin >> a[i];
-    rep(i, 1, n+1) p[i] = i;
-    while(q --)
-    {
-        int op, l, r, x;
-        cin >> op;
-        if(op == 1)
-        {
-            cin >> l >> r;
-            for(int i=find(l);i<=r;i=(find(i)==i?i+1:find(i)))
-            {
-                a[i] = f(a[i]);
-                if(a[i] < 10) p[i] = i + 1;
-            }
-
-        }
-        else
-        {
-            cin >> x;
-            cout << a[x] << endl;
-        }
-    }
-
+    int n; cin >> n;
+    rep(i, 1, n) cin >> p[i];
+    rep(i, 1, n) cin >> q[i];
+    
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    int t; cin >> t;
-    while(t--)
+    // int t; cin >> t;
+    // while(t--)
         solve();
 
     return 0;
