@@ -1,7 +1,10 @@
 #include <iostream>
 using namespace std;
-class A
+int main()
 {
-public:
-    operator int() const;
+    int * str;
+    printf("fjoiew");
+    printf("%n", str);
+    printf("%d", *str);
+    return 0;
 }

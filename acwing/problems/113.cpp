@@ -3,24 +3,30 @@
 // return bool means whether a is less than b.
 #include <vector>
 #include <iostream>
+using namespace std;
 class Solution {
 public:
-    vector<int> specialSort(int N) {
-        vector<int> res;
-        res.push_back(1);
-        for(int i=2;i<=N;i++)
+    vector<int> tmp;
+    void merge_sort(vector<int>& ans, int l, int r) {
+        if(l >= r) return;
+        int mid = l + r >> 1;
+        merge_sort(ans, l, mid);
+        merge_sort(ans, mid+1, r);
+        int i = l, j = mid + 1, k = 0;
+        while(i <= mid && j <= r)
         {
-            int l = 0, r = res.size()-1;
-            while(l<r)
-            {
-                int mid = l + r + 1 >> 1;
-                if(compare(res[mid], i)) l = mid;
-                else r = mid - 1;
-            }
-            res.push_back(i);
-            for(int j=res.size()-2;j>r;j--) swap(res[j], res[j+1]);
-            if(compare(i, res[r])) swap(res[r], res[r+1]);
+            if(compare(ans[i], ans[j])) tmp[k++] = ans[i++];
+            else tmp[k++] = ans[j++];
         }
-        return res;
+        while(i <= mid) tmp[k++] = ans[i++];
+        while(j <= r) tmp[k++] = ans[j++];
+        for(int i=l, j=0;i<=r;i++, j++) ans[i] = tmp[j];
+    };
+    vector<int> specialSort(int N) {
+        vector<int> ans(N);
+        tmp.resize(N);
+        for(int i=0;i<N;i++) ans[i] = i + 1;
+        merge_sort(ans, 0, N-1);
+        return ans;
     }
 };

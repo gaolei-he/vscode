@@ -2,8 +2,6 @@
 #include <stdlib.h>
 int main()
 {
-    long long a = 0x00003f3f3f3f0000;
-    printf("%lln\n", &a);
-    printf("%lln", (&a+1));
+    int x = 10;
     return 0;
 }

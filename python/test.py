@@ -1,5 +1,3 @@
-p = int(input())
-sum = 0
-for i in range(1, p):
-    sum += pow(i, p-2, p)
-print(sum)
+from random import shuffle as sort
+a = [i for i in range(10**7)]
+sort(a)
