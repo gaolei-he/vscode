@@ -1,5 +1,5 @@
 #include <iostream>
-
+//O(t*sqrt(n))
 using namespace std;
 #define ll long long
 
