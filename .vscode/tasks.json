@@ -10,7 +10,7 @@
                 "${file}",
             ],
             "options": {
-                // "cwd": "${fileDirname}"
+                "cwd": "."
             },
             "problemMatcher": [
                 "$gcc"
