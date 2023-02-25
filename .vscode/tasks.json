@@ -8,11 +8,9 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
-                "-o",
-                "/home/mechrevo/Documents/vscode/exe/${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                // "cwd": "${fileDirname}"
             },
             "problemMatcher": [
                 "$gcc"

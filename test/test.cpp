@@ -1,10 +1,12 @@
-#include<map>
 #include <iostream>
 using namespace std;
+int a[1000000000/2];
 int main()
 {
-    map<int, int> mp;
-    mp.insert({1, 2});
-    for(auto [k, v]:mp) cout << k << ' ' << v << endl;
+    cout << 2 << endl;
+    while(1)
+    {
+        if(1) continue;
+    }
     return 0;
 }
