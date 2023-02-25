@@ -1,12 +1,23 @@
 #include <iostream>
+
 using namespace std;
-int a[1000000000/2];
-int main()
-{
-    cout << 2 << endl;
-    while(1)
+
+class MyNumber {
+public:
+    int num;
+    MyNumber(): num(0) {}
+    MyNumber(int n): num(n) {}
+    friend istream& operator>>(istream& input, MyNumber& a)
     {
-        if(1) continue;
+        input >> a.num;
+        return input;
     }
+};
+
+int main() {
+    MyNumber n1;
+    cout << "Enter a number: ";
+    cin >> n1;
+    cout << "The number is: " << n1.num << endl;
     return 0;
 }
