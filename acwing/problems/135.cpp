@@ -29,40 +29,24 @@ using pii = pair<int, int>;
 using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
-const int N = 10 + 3e4, mod = 1e9 + 7;
-int p[N], d[N], sz[N];
-int find(int x)
-{
-    if(x != p[x])
-    {
-        int t = find(p[x]);
-        d[x] += d[p[x]];
-        p[x] = t;
-    }
-    return p[x];
-}
+const int N = 10 + 3e5, mod = 1e9 + 7;
+int a[N], s[N];
 void solve()
 {
-    int n; cin >> n;
-    rep(i, 1, N-4) p[i] = i, sz[i] = 1;
-    while(n --)
+    int n, m;
+    cin >> n >> m;
+    rep(i, 1, n) cin >> a[i];
+    multiset<int> st;
+    rep(i, 1, n) s[i] = s[i-1] + a[i];
+    int ans = -1e14;
+    int r = n + 1;
+    dec(i, n, 1)
     {
-        int op, i, j;
-        cin >> op >> i >> j;
-        if(op == 1)
-        {
-            int a = find(i), b = find(j);
-            p[a] = b;
-            d[a] += sz[a];
-            sz[b] += sz[a];
-        }
-        else
-        {
-            int a = find(i), b = find(j);
-            if(a != b) cout << -1 << endl;
-            else cout << d[i] - d[j] + 1 << endl;
-        }
+        while(r > 0 && st.size() < m + 1) st.insert(s[--r]);
+        st.erase(st.find(s[i]));
+        ans = max(ans, s[i] - *st.begin());
     }
+    cout << ans << endl;
 }
 signed main()
 {

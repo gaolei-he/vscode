@@ -8,6 +8,7 @@
     "C_Cpp.default.cStandard": "c17",
     "files.associations": {
         "iostream": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "array": "cpp"
     }
 }
