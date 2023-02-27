@@ -31,46 +31,42 @@ int rnd(int x) { return mrand() % x; }
 const int N = 10 + 1e5, mod = 1e9 + 7;
 int a[N], dp[N];
 multiset<int> st;
-void remov(int x)
-{
-    cerr << st.size() << ' ';
-    auto it = st.find(x);
-    st.erase(it);
-    cerr << st.size() << endl;
-}
 void solve()
 {
-    int n, m;
-    cin >> n >> m;
-    rep(i, 1, n) cin >> a[i];
+    int n, m; cin >> n >> m;
+    rep(i, 1, n)
+    {
+        cin >> a[i];
+        if(a[i] > m)
+        {
+            cout << -1 << endl;
+            return;
+        }
+    }
     deque<int> q;
     int sm = 0;
-    
     for(int i=1, j=1;i<=n;i++)
     {
         sm += a[i];
-        while(sm > m) sm -= a[j++];
+        while(sm > m) sm -= a[j ++];
         while(q.size() && q.front() < j)
         {
-            remov(dp[q.front()] + a[q.pop_front(), q.front()]);
+            int t = q.front();
+            q.pop_front();
+            if(q.size()) st.erase(st.find(dp[t] + a[q.front()]));
         }
-        int last = 0;
         while(q.size() && a[q.back()] <= a[i])
         {
-            remov(dp[q.back()] + a[last]);
-            last = q.back();
+            int t = q.back();
             q.pop_back();
+            if(q.size()) st.erase(st.find(dp[q.back()] + a[t]));
         }
-        
-        if(q.size()) dp[i] = dp[j - 1] + a[q.front()];
-        if(st.size()) dp[i] = min(dp[i], *st.begin());
-        if(q.size()) dp[i] = min(dp[i], dp[q.back()] + a[i]);
-        // else dp[i] = min(dp[i], a[i]);
-
+        if(q.size()) st.insert(dp[q.back()] + a[i]);
         q.push_back(i);
-        st.insert(dp[i]);
+        dp[i] = dp[j-1] + a[q.front()];
+        if(st.size()) dp[i] = min(dp[i], *st.begin());
     }
-    cout << dp[n];
+    cout << dp[n] << endl;
 }
 signed main()
 {
