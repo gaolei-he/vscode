@@ -1,1 +1,0 @@
-g++ -g -rdynamic CMakeFiles/mybc.dir/src/calc.cpp.o CMakeFiles/mybc.dir/src/input.cpp.o CMakeFiles/mybc.dir/src/main.cpp.o CMakeFiles/mybc.dir/src/myint.cpp.o CMakeFiles/mybc.dir/src/output.cpp.o CMakeFiles/mybc.dir/src/version.cpp.o -o ../bin/mybc 
