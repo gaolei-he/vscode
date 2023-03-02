@@ -1,32 +1,20 @@
-#include <map>
 #include <iostream>
 using namespace std;
-void solve()
+void hanoi(int n, char a, char b, char c)
 {
-    int n, q; cin >> n >> q;
-    map<string, string> mp;
-    for (int i = 0; i < n; i++)
+    if(n == 1)
     {
-        string a, b;
-        cin >> a >> b;
-        if(mp.count(a)) mp[a] = min(mp[a], b);
-        else mp[a] = b;
+        cout << 1 << ' ' << a << ' ' << c << endl;
+        return;
     }
-    while(q --)
-    {
-        string a;
-        cin >> a;
-        if(mp.count(a)) cout << mp[a] << endl;
-        else cout << "Not your business, don't ask more!" << endl;
-    }
+    hanoi(n-1, a, c, b);
+    cout << n << ' ' << a << ' ' << c << endl;
+    hanoi(n-1, b, a, c);
 }
 int main()
 {
-    
-    ios::sync_with_stdio(false);
-    cin.tie(0), cout.tie(0);
-    int t; cin >> t;
-    while(t --)
-        solve();
+    int n;
+    cin >> n;
+    hanoi(n, 'A', 'C', 'B');
     return 0;
 }
