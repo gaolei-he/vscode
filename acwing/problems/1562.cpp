@@ -29,26 +29,47 @@ using pii = pair<int, int>;
 using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
-const int N = 10 + 1e5, mod = 1e9 + 7;
+const int N = 10 + 1e3, mod = 1e9 + 7;
+int d[N][N];
+int n, l;
+void floyd()
+{
+    rep(k, 1, n)
+        rep(i, 1, n)
+            rep(j, 1, n)
+                d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
+}
 void solve()
 {
-    int n, k; cin >> n >> k;
-    string s, t; cin >> s >> t;
-    string ans = "YES";
-    for(int i=max(0ll, n-k);i < min(n, k);i++)
-        if(s[i] != t[i]) ans = "NO";
-    sort(t.begin(), t.end());
-    sort(s.begin(), s.end());
-    if(s != t) ans = "NO";
-    cout << ans << endl;
+    cin >> n >> l;
+    memset(d, 0x3f, sizeof(d));
+    rep(i, 1, n) d[i][i] = 0;
+    rep(i, 1, n)
+    {
+        int num; cin >> num;
+        rep(j, 1, num)
+        {
+            int x; cin >> x;
+            d[i][x] = 1;
+        }
+    }
+    floyd();
+    int k; cin >> k;
+    while(k -- )
+    {
+        int num; cin >> num;
+        int ans = -1;
+        rep(i, 1, n) if(d[i][num] <= l) ans ++;
+        cout << ans << endl;
+    }
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    int t; cin >> t;
-    while(t--)
+    // int t; cin >> t;
+    // while(t--)
         solve();
 
     return 0;

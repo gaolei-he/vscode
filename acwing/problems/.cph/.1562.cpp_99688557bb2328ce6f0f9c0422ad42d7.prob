@@ -1,0 +1,1 @@
+{"name":"Local: 1562","url":"/home/mechrevo/Documents/vscode/acwing/problems/1562.cpp","tests":[{"id":1677812600536,"input":"7 3\n3 2 3 4\n0\n2 5 6\n2 3 1\n2 3 4\n1 4\n1 5\n2 2 6","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/acwing/problems/1562.cpp","group":"local","local":true}
