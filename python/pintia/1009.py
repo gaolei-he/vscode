@@ -9,13 +9,25 @@ for p in a:
     s2 *= p[1]
 for p in a:
     s1 += s2 // p[1] * p[0]
-
+flag = False
+if s1 < 0:
+    flag = True
+s1 = abs(s1)
 k = gcd(s1, s2)
 s1 //= k
 s2 //= k
-if abs(s1) < s2:
+if s1 == 0:
+    print('0')
+elif s1 < s2:
+    if(flag):
+        print('-', end='')
     print(f'{s1}/{s2}')
 elif s1 % s2 == 0:
+    if(flag):
+        print('-', end='')
     print(s1//s2)
 else:
-    print(f'{s1//s2} {s1%s2}/{s2}')
+    if(flag):
+        print(f'-{s1//s2} -{s1%s2}/{s2}')
+    else:
+        print(f'{s1//s2} {s1%s2}/{s2}')
