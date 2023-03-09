@@ -1,0 +1,1 @@
+{"name":"Local: i","url":"/home/mechrevo/Documents/vscode/test/20230311/i.py","tests":[{"id":1678364501355,"input":"1000000000 314 314\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/test/20230311/i.py","group":"local","local":true}

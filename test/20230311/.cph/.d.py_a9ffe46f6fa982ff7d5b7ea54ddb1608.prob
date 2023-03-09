@@ -1,0 +1,1 @@
+{"name":"Local: d","url":"/home/mechrevo/Documents/vscode/test/20230311/d.py","tests":[{"id":1678361288904,"input":"2 3\n--o\no--\n","output":""},{"id":1678361616594,"input":"5 4\n-o--\n----\n----\n----\n-o--\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/test/20230311/d.py","group":"local","local":true}
