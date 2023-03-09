@@ -1,73 +1,40 @@
 #include <iostream>
-#include <cstring>
-#include <algorithm>
 #include <vector>
-#include <set>
-#include <bitset>
-#include <queue>
 #include <map>
-#include <stack>
-#include <string>
-#include <random>
-#include <cassert>
-#include <functional>
-#include <iomanip>
-#include <array>
-#include <unordered_map>
-#include <unordered_set>
-#define inf 0x3f3f3f3f
-#define linf 0x3f3f3f3f3f3f3f3fll
-#define endl '\n'
-#define ll long long
-#define int long long
-#define ull unsigned long long
-#define SZ(x) (int)x.size()
-#define rep(i, a, n) for (int i = (a); i <= (n); i++)
-#define dec(i, n, a) for (int i = (n); i >= (a); i--)
 using namespace std;
-using pii = pair<int, int>;
-using ar2 = array<int, 2>;
-mt19937 mrand(random_device{}());
-int rnd(int x) { return mrand() % x; }
-const int N = 10 + 1e5, mod = 1e9 + 7;
-int qp(int a, int b, int p = mod)
+int main()
 {
-    int res = 1;
-    while(b)
+    int n; cin >> n;
+    map<int, int> mp;
+    for (int i = 0; i < n; i++)
     {
-        if(b & 1) res = res * a % p;
-        b >>= 1;
-        a = a * a % p;
+        int x; cin >> x;
+        mp[x] ++;
     }
-    return res;
-}
-void solve()
-{
-    int n, q;
-    cin >> n >> q;
-    unordered_map<string, string> mp;
-    rep(i, 1, n)
-    {
-        string a, b;
-        cin >> a >> b;
-        if(mp.count(a)) mp[a] = min(mp[a], b);
-        else mp[a] = b;
-    }
-    rep(i, 1, q)
-    {
-        string a; cin >> a;
-        if(mp.count(a)) cout << mp[a] << endl;
-        else cout << "Not your business, don't ask more!" << endl;
-    }
-}
-signed main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-    int t; cin >> t;
-    while(t--)
-        solve();
-
+    int ma = 0;
+    for(auto& p:mp) ma = max(p.second, ma);
+    for(auto& p:mp)
+        if(p.second == ma)
+            cout << p.first << endl << p.second << endl;
     return 0;
 }
+// int a[2010];
+// int main()
+// {
+//     int n; cin >> n;
+//     vector<int> vec(n);
+//     for (int i = 0; i < n; i++)
+//     {
+//         int x; cin >> x;
+//         vec.push_back(x);
+//         a[x] ++;
+//     }
+//     long long ans = 0;
+//     for(auto x:vec)
+//     {
+//         for(int i=1;i < x;i ++) ans += a[i];
+//         a[x] --;
+//     }
+//     cout << ans << endl;
+//     return 0;
+// }
