@@ -28,50 +28,45 @@ mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
 const int N = 11, mod = 1e9 + 7;
 int a[N][N];
-int dx[] = {0, -1, 0, 1};
-int dy[] = {-1, 0, 1, 0};
-bool st[N][N];
-int f[N][N];
+int dx[] = {0, 1};
+int dy[] = {1, 0};
+bool sta[N][N];
+int h, w, ans, res;
+unordered_set<int> st;
+void dfs(int x, int y)
+{
+
+    if(x == h && y == w)
+    {
+        ans ++;
+        return;
+    }
+    for (int i = 0; i < 2; i++)
+    {
+        int tx = x + dx[i], ty = y + dy[i];
+        if(tx > 0 && tx <= h && ty > 0 && ty <= w && !sta[tx][ty])
+        {
+            if(st.count(a[tx][ty])) continue;
+            st.insert(a[tx][ty]);
+            sta[tx][ty] = true;
+            dfs(tx, ty);
+            sta[tx][ty] = false;
+            st.erase(a[tx][ty]);
+        }
+    }
+};
 void solve()
 {
-    int h, w;
+    
     cin >> h >> w;
     rep(i, 1, h)
         rep(j, 1, w)
             cin >> a[i][j];
-    unordered_set<int> st1;
-    int ans = 0;
-    int res = 0;
-    function<int(int, int)> dfs = [&](int x, int y) {
-        res ++;
-        if(f[x][y]) return f[x][y];
-        if(x == w && y == h)
-        {
-            ans ++;
-            return 1;
-        }
-        for (int i = 0; i < 4; i++)
-        {
-            int tx = dx[i] + x, ty = dy[i] + y;
-            if(tx > 0 && tx <= h && ty > 0 && ty <= w && !st[tx][ty])
-            {
-                st[tx][ty] = true;
-                f[x][y] += dfs(tx, ty);
-                st[tx][ty] = false;
-            }
-        }
-        return f[x][y];
-    };
     
-    st[1][1] = true;
-    f[1][1] = dfs(1, 1);
-    cout <<f[1][1] <<endl;
-    // rep(i, 1, h)
-    // {
-    //     rep(j, 1, w) cout <<f[i][j] << ' ';
-    //     cout <<endl;
-    // }
-    cout << ans << ' ' << res << endl;
+    sta[1][1] = true;
+    st.insert(a[1][1]);
+    dfs(1, 1);
+    cout << ans << endl;
 }
 signed main()
 {

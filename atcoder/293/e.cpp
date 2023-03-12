@@ -28,47 +28,22 @@ using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
 const int N = 10 + 1e5, mod = 1e9 + 7;
-ll exgcd(ll a, ll b, ll &x, ll &y)// 拓欧
-{
-    if (b == 0)
-    {
-        x = 1;
-        y = 0;
-        return a;
-    }
-    ll d = exgcd(b, a % b, y, x);
-    y -= (a / b) * x;
-    return d;
-}
-ll inv(ll a, ll p)
-{
-    ll x, y;
-    if (exgcd(a, p, x, y) != 1) // 无解的情形
-        return -1;
-    return (x % p + p) % p;
-}
-int qp(int a, int b, int p)
-{
-    int res = 1 % p;
-    while(b)
-    {
-        if(b & 1) res = res * a % p;
-        b >>= 1;
-        a = a * a % p;
-    }
-    return res;
-}
 void solve()
 {
     int a, x, m;
     cin >> a >> x >> m;
-    if(a == 1)
+    int t1 = a, t2 = 1, t3 = 0, t4 = 1;
+    int res = 1;
+    while(x)
     {
-        cout << x % m << endl;
+        if(x & 1) res = res * (t1 + t2) % m;
+        x >>= 1;
+        t1 = (t1 * t1 + t2 * t3) % m;
+        t2 = (t1 * t2 + t2 * t4) % m;
+        t3 = (t1 * t3 + t4 * t3) % m;
+        t4 = (t3 * t2 + t4 * t4) % m;
     }
-    int in = inv(a-1, m);
-    if(in == -1)
-    cout << (qp(a, x, m) - 1 + m) % m *  % m << endl;
+    cout << res << endl;
 }
 signed main()
 {
