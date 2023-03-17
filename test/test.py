@@ -1,9 +1,10 @@
-from random import random
-t = int(input())
-for _ in range(t):
-    n = int(random() * 100000)
-    filename = './' + str(_ + 1) + '.in'
-    file = open(filename, 'w')
-    file.write(str(n) + '\n')
-    for i in range(n):
-        file.write(str(int(random() * 100000)) + ' ')
+from datetime import datetime, timedelta
+st = datetime(1901, 1, 1)
+ed = datetime(2000, 12, 31)
+delta = timedelta(1)
+ans = 0
+while st <= ed:
+    if st.weekday() == 6 and st.day == 1:
+        ans += 1
+    st += delta
+print(ans)

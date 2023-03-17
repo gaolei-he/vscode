@@ -3,5 +3,6 @@
 int main()
 {
     int x = 10;
+    puts("test");
     return 0;
 }
