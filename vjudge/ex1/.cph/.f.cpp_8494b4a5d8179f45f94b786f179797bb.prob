@@ -1,0 +1,1 @@
+{"name":"Local: f","url":"/home/mechrevo/Documents/vscode/vjudge/ex1/f.cpp","tests":[{"id":1679195392141,"input":"3 14 15926535\n","output":"109718301\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/vjudge/ex1/f.cpp","group":"local","local":true}
