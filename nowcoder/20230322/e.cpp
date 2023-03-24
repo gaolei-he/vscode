@@ -42,7 +42,6 @@ void f(int op, int& ans)
             res ++;
             int x = i % 3 + 1;
             int y = i / 3 + 1;
-            if(op == 16) cerr << x << ' ' << y << endl;
             b[x][y] = ~b[x][y];
             rep(j, 0, 3)
                 b[x+dx[j]][y+dy[j]] = ~b[x+dx[j]][y+dy[j]];
