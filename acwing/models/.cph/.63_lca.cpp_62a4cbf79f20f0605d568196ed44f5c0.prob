@@ -1,0 +1,1 @@
+{"name":"Local: 63_lca","url":"/home/mechrevo/Documents/vscode/acwing/models/63_lca.cpp","tests":[{"id":1679835899225,"input":"5 5 4\n3 1\n2 4\n5 1\n1 4\n2 4\n3 2\n3 5\n1 2\n4 5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/acwing/models/63_lca.cpp","group":"local","local":true}
