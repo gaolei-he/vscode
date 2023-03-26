@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.2)#规定cmake的最低版本要求
-project(project)#项目的名称，不一定和你的文件夹名称一样
+project(project)#项目名称
 set(CMAKE_CXX_COMPILER "g++")#设置c++编译器
 
 include_directories(${PROJECT_SOURCE_DIR}/include)#添加头文件的搜索路径
