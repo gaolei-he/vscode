@@ -1,4 +1,4 @@
-//O(n+m)
+// O(n+m)
 #include <iostream>
 #include <cstring>
 #include <algorithm>
@@ -6,7 +6,7 @@ using namespace std;
 const int N = 1e5+10, M = 2e5+10;
 int n, m;
 int h[N], e[M], ne[M], idx;
-int color[N];
+int color[N]; 
 
 void add(int a, int b)
 {
