@@ -3,14 +3,14 @@
 #include <queue>
 #include <iostream>
 template<typename T>
-class mystack
+class mystack1
 {
 private:
     T* data;
     unsigned int length;
     unsigned int max_len;
 public:
-    mystack() {
+    mystack1() {
         this->length = 0;
         this->max_len = 0;
         data = nullptr;
@@ -41,19 +41,60 @@ public:
     unsigned int size() {
         return length;
     }
-    ~mystack() {
+    ~mystack1() {
         if(data) delete[] data;
     }
 };
+template<typename T>
+class myqueue1
+{
+private:
+    int head;
+    int tail;
+    int max_length;
+    T* data;
+public:
+    myqueue1() {
+        head = 0;
+        tail = 0;
+        max_length = 2;
+        data = new T[max_length];
+    }
+    bool empty() {
+        return (tail - head + max_length) % max_length == 0;
+    }
+    int size() {
+        return (tail - head + max_length) % max_length;
+    }
+    void pop() {
+        head = (head + 1 + max_length) % max_length;
+    }
+    T& front() {
+        return data[head];
+    }
+    void push(T x) {
+        if(this->size() + 1 == max_length) {
+            T* tmp = new T[max_length << 1];
+            
+            int l = 0, r = 0;
+            while(!this->empty())
+            {
+                tmp[r++] = this->front();
+                this->pop();
+            }
+            delete[] data;
+
+            data = tmp;
+            max_length <<= 1;
+            head = l;
+            tail = r;
+        }
+        data[(tail ++ + max_length) % max_length] = x;
+        tail %= max_length;
+    }
+};
+using namespace std;
 int main()
 {
-    std::stack<int> s;
-    mystack<std::string> stk;
-    int n; std::cin >> n;
-    for(int i=0;i<n;i++)
-    {
-        stk.push(std::to_string(i));
-        std::cout << stk.top() << std::endl;
-    }
     return 0;
 }
