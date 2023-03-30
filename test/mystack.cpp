@@ -93,7 +93,6 @@ public:
         tail %= max_length;
     }
 };
-using namespace std;
 int main()
 {
     return 0;
