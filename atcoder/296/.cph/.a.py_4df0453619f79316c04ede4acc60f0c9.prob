@@ -1,0 +1,1 @@
+{"name":"Local: a","url":"/home/mechrevo/Documents/vscode/atcoder/296/a.py","tests":[{"id":1680350560479,"input":"9\nFMFMMFMFM\n","output":"No\n"},{"id":1680350567455,"input":"1\nF\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/atcoder/296/a.py","group":"local","local":true}
