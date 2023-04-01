@@ -1,0 +1,1 @@
+{"name":"Local: g","url":"/home/mechrevo/Documents/vscode/nowcoder/20230401/g.cpp","tests":[{"id":1680324759385,"input":"0 0 2 2\n-1 -1 -2 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/nowcoder/20230401/g.cpp","group":"local","local":true}
