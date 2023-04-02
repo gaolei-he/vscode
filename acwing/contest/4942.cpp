@@ -32,7 +32,42 @@ void solve()
 {
     int n, m;
     cin >> n >> m;
-    
+    vector<int> vec;
+    vec.resize(1, 0);
+    int r = 1;
+    while(r <= m) r *= n;
+    while(m)
+    {
+        int v = 0;
+        while(m >= r) m -= r, v ++;
+        r /= n;
+        vec.push_back(v);
+    }
+    bool flag = true;
+    reverse(vec.begin(), vec.end());
+    for (int i = 0; i < vec.size(); i++)
+    {
+        if(vec[i] == n)
+        {
+            vec[i + 1] += 1;
+            vec[i] = 0;
+            continue;
+        }
+        else if(vec[i] == 0 || vec[i] == 1) continue;
+        vec[i] += 1;
+        if(vec[i] == n)
+        {
+            vec[i + 1] += 1;
+            vec[i] = 0;
+        }
+    }
+    for(auto x:vec)
+    {
+        if(x == 0 || x == 1) continue;
+        flag = false;
+    }
+    if(flag) cout << "YES" << endl;
+    else cout << "NO" << endl;
 }
 signed main()
 {
