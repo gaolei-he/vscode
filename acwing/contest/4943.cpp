@@ -31,14 +31,13 @@ const int N = 10 + 1e3, mod = 1e9 + 7;
 int n, m, k;
 int x1, x2, y1__, y2;
 char str[N][N];
-bool sta[N][N];
+bool sta[N][N][4];
 int dx[] = {0, -1, 0, 1};
 int dy[] = {-1, 0, 1, 0};
 int arr[] = {0, 1, 2, 3};
 int cnt = 0;
 int bfs()
 {
-    sta[x1][y1__] = true;
     queue<pii> q;
     q.push({x1, y1__});
     if(x1 == x2 && y1__ == y2) return cnt;
@@ -60,13 +59,14 @@ int bfs()
                 {
                     int tx = x + j * dx[i], ty = y + j * dy[i];
                     if(!(tx > 0 && tx <= n && ty > 0 && ty <= m)) break;
+                    else if(sta[tx][ty][i]) break;
                     if (str[tx][ty] == '#')
                         break;
-                    if (!sta[tx][ty])
+                    if (!sta[tx][ty][i])
                     {
                         if(tx == x2 && ty == y2) return cnt;
                         tmp.push({tx, ty});
-                        sta[tx][ty] = true;
+                        sta[tx][ty][i] = true;
                     }
                 }
             }
