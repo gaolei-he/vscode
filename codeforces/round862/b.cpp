@@ -30,7 +30,18 @@ int rnd(int x) { return mrand() % x; }
 const int N = 10 + 1e5, mod = 1e9 + 7;
 void solve()
 {
-    
+    int n; cin >> n;
+    string s; cin >> s;
+    char mi = 'z';
+    for(auto c:s) mi = min(c, mi);
+    string ans;
+    for(int i=s.size()-1;i>=0;--i)
+        if(s[i] == mi)
+        {
+            ans = s[i] + s.substr(0, i) + s.substr(i+1);
+            break;
+        }
+    cout << ans << endl;
 }
 signed main()
 {

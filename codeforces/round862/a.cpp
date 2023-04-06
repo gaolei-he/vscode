@@ -28,9 +28,16 @@ using ar2 = array<int, 2>;
 mt19937 mrand(random_device{}());
 int rnd(int x) { return mrand() % x; }
 const int N = 10 + 1e5, mod = 1e9 + 7;
+int a[N];
 void solve()
 {
-    
+    int n; cin >> n;
+    rep(i, 1, n) cin >> a[i];
+    int v = 0;
+    rep(i, 1, n) v ^= a[i];
+    if(n & 1) cout << v << endl;
+    else if(!v) cout << 0 << endl;
+    else cout << -1 << endl;
 }
 signed main()
 {

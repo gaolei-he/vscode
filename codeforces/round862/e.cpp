@@ -30,6 +30,8 @@ int rnd(int x) { return mrand() % x; }
 const int N = 10 + 1e5, mod = 1e9 + 7;
 void solve()
 {
+    int n; cin >> n;
+    vector<vector<int>> g(n + 1);
     
 }
 signed main()
@@ -37,8 +39,8 @@ signed main()
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    int t; cin >> t;
-    while(t--)
+    // int t; cin >> t;
+    // while(t--)
         solve();
 
     return 0;
