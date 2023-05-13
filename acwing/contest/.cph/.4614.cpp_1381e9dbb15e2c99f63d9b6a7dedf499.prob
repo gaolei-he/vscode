@@ -1,1 +1,0 @@
-{"name":"Local: 4614","url":"/home/mechrevo/Documents/vscode/acwing/周赛/4614.cpp","tests":[{"id":1662816319752,"input":"2 4 5\n40 20\n01\n01\n10\n11\n00 20\n00 40\n11 20\n11 40\n11 60","output":"2\n4\n2\n3\n4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/acwing/周赛/4614.cpp","group":"local","local":true}

@@ -1,3 +1,0 @@
-/home/mechrevo/Documents/vscode/project/build/CMakeFiles/mybc.dir
-/home/mechrevo/Documents/vscode/project/build/CMakeFiles/edit_cache.dir
-/home/mechrevo/Documents/vscode/project/build/CMakeFiles/rebuild_cache.dir

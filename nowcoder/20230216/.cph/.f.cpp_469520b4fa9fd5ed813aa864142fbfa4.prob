@@ -1,1 +1,0 @@
-{"name":"Local: f","url":"/home/mechrevo/Documents/vscode/nowcoder/20230216/f.cpp","tests":[{"id":1676547458747,"input":"10 2 90\n203 0\n169 91\n175 88\n175 0\n175 90\n189 0\n189 0\n189 95\n189 89\n256 100\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/nowcoder/20230216/f.cpp","group":"local","local":true}

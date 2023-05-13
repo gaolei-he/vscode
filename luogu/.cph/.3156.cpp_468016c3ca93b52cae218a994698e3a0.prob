@@ -1,1 +1,0 @@
-{"name":"Local: 3156","url":"/home/mechrevo/Documents/vscode/luogu/3156.cpp","tests":[{"id":1667704816251,"input":"10 3\n1 9 2 60 8 17 11 4 5 14\n1 5 9","output":"1\n8\n5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/luogu/3156.cpp","group":"local","local":true}

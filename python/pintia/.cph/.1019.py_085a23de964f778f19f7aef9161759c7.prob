@@ -1,1 +1,0 @@
-{"name":"Local: 1019","url":"/home/mechrevo/Documents/vscode/python/pintia/1019.py","tests":[{"id":1678253215289,"input":"1 1\n6\n8 10 9 12\n5 10 5 10\n3 8 5 12\n12 18 1 13\n4 16 12 15\n15 1 1 16\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/python/pintia/1019.py","group":"local","local":true}

@@ -1,1 +1,0 @@
-{"name":"Local: 6033","url":"/home/mechrevo/Documents/vscode/luogu/6033.cpp","tests":[{"id":1672903791973,"input":"4\n2 2 2 2","output":""},{"id":1672918969335,"input":"8\n37461 75360 46736 51097 66867 62178 96430 38866","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/luogu/6033.cpp","group":"local","local":true}

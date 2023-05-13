@@ -1,1 +1,0 @@
-{"name":"Local: i","url":"/home/mechrevo/Documents/vscode/ac_nowcoder/winter2023/3/i.cpp","tests":[{"id":1674281422008,"input":"5\n5\n6\n8\n13\n16","output":"-1\n6\n10\n27\n12"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/ac_nowcoder/winter2023/3/i.cpp","group":"local","local":true}

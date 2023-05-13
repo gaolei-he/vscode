@@ -1,1 +1,0 @@
-{"name":"Local: i","url":"/home/mechrevo/Documents/vscode/codeforces/20230413/i.cpp","tests":[{"id":1681386493183,"input":"3\n0 3 11101111\n1 4 10111111\n2 4 10111101","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/codeforces/20230413/i.cpp","group":"local","local":true}

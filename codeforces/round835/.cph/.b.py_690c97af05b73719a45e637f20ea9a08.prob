@@ -1,1 +1,0 @@
-{"name":"Local: b","url":"/home/mechrevo/Documents/vscode/codeforce/round835/b.py","tests":[{"id":1669288785709,"input":"5\n1\na\n4\ndown\n10\ncodeforces\n3\nbcf\n5\nzzzzz\n","output":"1\n23\n19\n6\n26\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/codeforce/round835/b.py","group":"local","local":true}

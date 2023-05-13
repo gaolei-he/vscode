@@ -1,1 +1,0 @@
-{"name":"Local: c","url":"/home/mechrevo/Documents/vscode/atcoder/296/c.py","tests":[{"id":1680351068880,"input":"2 0\n141421356 17320508\n","output":""},{"id":1680351356077,"input":"6 -4\n-2 -7 -1 -8 -2 -8","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/atcoder/296/c.py","group":"local","local":true}

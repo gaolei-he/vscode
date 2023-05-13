@@ -1,1 +1,0 @@
-{"name":"Local: a","url":"/home/mechrevo/Documents/vscode/codeforces/round849/a.py","tests":[{"id":1675767945117,"input":"10\na\nb\nc\nd\ne\nf\ng\nh\ni\nj\n","output":"NO\nNO\nYES\nYES\nYES\nYES\nNO\nNO\nNO\nNO\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/codeforces/round849/a.py","group":"local","local":true}

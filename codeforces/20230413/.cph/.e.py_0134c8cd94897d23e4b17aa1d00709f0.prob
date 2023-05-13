@@ -1,1 +1,0 @@
-{"name":"Local: e","url":"/home/mechrevo/Documents/vscode/codeforces/20230413/e.py","tests":[{"id":1681373306277,"input":"6\n0\n10\n102\n70308432\n12003\n900000000001","output":"0\n1T\n1B02\n7K03TW8K4B3T2\n1W2K03\n9KY"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/codeforces/20230413/e.py","group":"local","local":true}
