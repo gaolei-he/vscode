@@ -10,7 +10,6 @@ import time
 
 
 async def loginfunction(loginUrl: str):
-
     start_time = time.time()
     while True:
         if time.time() - start_time > 60:
@@ -32,10 +31,15 @@ async def loginfunction(loginUrl: str):
     page = await browser.newPage()
     await page.setViewport({'width': width, 'height': height})
     await page.goto(loginUrl)
+
+    if page.querySelector("body > div.success > p") != None:
+        await browser.close()
+        return
+
     element = await page.querySelector("#username")
-    await element.type("******")
+    await element.type("***")
     element = await page.querySelector("#password")
-    await element.type("******")
+    await element.type("***")
     element = await page.querySelector("#login-account")
     await element.click()
     await page.waitForSelector("body > div.success > p", timeout=30000)
