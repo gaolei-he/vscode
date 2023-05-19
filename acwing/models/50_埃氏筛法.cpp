@@ -13,7 +13,7 @@ void get_prime(int n)
         if(!st[i])
         {
             primes[cnt++]=i;
-            for(int j=i+i;j<=n;j+=i)
+            for(int j=i*i;j > 0 && j<=n;j+=i)
                 st[j]=true;
         }
     }

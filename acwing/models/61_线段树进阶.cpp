@@ -66,7 +66,7 @@ int query(int u, int l, int r)
 }
 signed main()
 {
-    scanf("%lld %lld", &n, &m);
+    scanf("%lld %lld", &n, &m);//n个数，m条操作
     for(int i=1;i<=n;i++) scanf("%lld", &w[i]);
     build(1, 1, n);
     char op[2];
@@ -77,9 +77,9 @@ signed main()
         if(*op == 'C')
         {
             scanf("%lld", &d);
-            modify(1, l, r, d);
+            modify(1, l, r, d);//操作 ‘C’，将区间[l,r]中的每个数加上d
         }
-        else printf("%lld\n", query(1, l, r));
+        else printf("%lld\n", query(1, l, r));//操作 ‘Q’，询问区间[l,r]中所有数的和
     }
     
     return 0;
