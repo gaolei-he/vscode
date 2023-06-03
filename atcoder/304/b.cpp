@@ -29,15 +29,19 @@ using ar2 = array<int, 2>;
 const int N = 10 + 1e5, mod = 1e9 + 7;
 void solve()
 {
-    
+    int n; cin >> n;
+    string s = to_string(n);
+    rep(i, 3, SZ(s) - 1) s[i] = '0';
+    cout << s << endl;
 }
+//10000 0000
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    int t; cin >> t;
-    while(t--)
+    // int t; cin >> t;
+    // while(t--)
         solve();
 
     return 0;

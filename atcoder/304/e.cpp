@@ -23,28 +23,47 @@
 #define dec(i, n, a) for (int i = (n); i >= (a); i--)
 using namespace std;
 using pii = pair<int, int>;
-using psi = pair<string, int>;
 using ar2 = array<int, 2>;
 // mt19937 mrand(random_device{}());
 // int rnd(int x) { return mrand() % x; }
-const int N = 10 + 1e5, mod = 1e9 + 7;
+const int N = 10 + 2e5, mod = 1e9 + 7;
+int p[N];
+int find(int x)
+{
+    if(p[x] != x) p[x] = find(p[x]);
+    return p[x];
+}
 void solve()
 {
-    int n; cin >> n;
-    vector<psi> vec(n);
-    for(auto& x:vec) cin >> x.first >> x.second;
-    int mi = 1e10+7;
-    for(auto x:vec) mi = min(x.second, mi);
-    bool flag = false;
-    for(auto x:vec)
+    int n, m;
+    cin >> n >> m;
+    rep(i, 1, n) p[i] = i;
+    rep(i, 1, m)
     {
-        if(x.second == mi) flag = true;
-        if(flag) cout << x.first << endl;
+        int a, b;
+        cin >> a >> b;
+        p[find(a)] = find(b);
     }
-    for(auto x:vec)
+    set<string> st;
+    int k; cin >> k;
+    rep(i, 1, k)
     {
-        if(x.second == mi) flag = false;
-        if(flag) cout << x.first << endl;
+        int a, b;
+        cin >> a >> b;
+        int x = find(a);
+        int y = find(b);
+        st.insert(to_string(x) + " " + to_string(y));
+    }
+    int q; cin >> q;
+    while(q--)
+    {
+        int a, b;
+        cin >> a >> b;
+        int x = find(a);
+        int y = find(b);
+        if(st.count(to_string(x) + " " + to_string(y))) cout << "No\n";
+        else if(st.count(to_string(y) + " " + to_string(x))) cout << "No\n";
+        else cout << "Yes\n";
     }
 }
 signed main()

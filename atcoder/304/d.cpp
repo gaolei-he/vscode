@@ -23,29 +23,38 @@
 #define dec(i, n, a) for (int i = (n); i >= (a); i--)
 using namespace std;
 using pii = pair<int, int>;
-using psi = pair<string, int>;
 using ar2 = array<int, 2>;
 // mt19937 mrand(random_device{}());
 // int rnd(int x) { return mrand() % x; }
 const int N = 10 + 1e5, mod = 1e9 + 7;
 void solve()
 {
-    int n; cin >> n;
-    vector<psi> vec(n);
-    for(auto& x:vec) cin >> x.first >> x.second;
-    int mi = 1e10+7;
-    for(auto x:vec) mi = min(x.second, mi);
-    bool flag = false;
-    for(auto x:vec)
+    int w, h, n, a, b;
+    cin >> w >> h >> n;
+    vector<pii> star(n);
+    for(auto& x:star) cin >> x.first >> x.second;
+    cin >> a;
+    vector<int> vecx(a);
+    for(auto& x:vecx) cin >> x;
+    cin >> b;
+    vector<int> vecy(b);
+    for(auto& x:vecy) cin >> x;
+    unordered_map<string, int> mp;
+    for(auto x:star)
     {
-        if(x.second == mi) flag = true;
-        if(flag) cout << x.first << endl;
+        int tx, ty;
+        auto it = lower_bound(vecx.begin(), vecx.end(), x.first);
+        if(it == vecx.begin()) tx = 0;
+        else tx = *(--it);
+        it = lower_bound(vecy.begin(), vecy.end(), x.second);
+        if(it == vecy.begin()) ty = 0;
+        else ty = *(--it);
+        mp[to_string(tx) + " " + to_string(ty)] ++;
     }
-    for(auto x:vec)
-    {
-        if(x.second == mi) flag = false;
-        if(flag) cout << x.first << endl;
-    }
+    int mi = 1e9, ma = -1;
+    for(auto x:mp) mi = min(x.second, mi), ma = max(x.second, ma);
+    if((a + 1) * (b + 1) > mp.size()) mi = 0;
+    cout << mi << ' ' << ma << endl;
 }
 signed main()
 {

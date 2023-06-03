@@ -1,0 +1,1 @@
+{"name":"Local: a","url":"/home/mechrevo/Documents/vscode/atcoder/304/a.cpp","tests":[{"id":1685793891784,"input":"2\ntakahashi 1000000000\naoki 999999999","output":"carol\ndave\nellen\nalice\nbob"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/atcoder/304/a.cpp","group":"local","local":true}
