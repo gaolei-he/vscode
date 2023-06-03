@@ -1,56 +1,33 @@
-#include <bits/stdc++.h>
-#define endl "\n"
+#include <iostream>
+#include <vector>
 using namespace std;
-void haxi(unsigned long long *a, unsigned long long *b, unsigned long long *p, string s, int n)
+void f(int x)
 {
-    unsigned long long hx = 131, H = 0, h = 0;
-    p[0] = 1;
-    a[0] = b[0] = 0;
-    s = " " + s;
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < 32; i++)
     {
-        H = H * hx + static_cast<unsigned long long>(s[i]);
-        a[i] = H;
-        h = h * hx + static_cast<unsigned long long>(s[n + 1 - i]);
-        b[i] = h;
-            p[i] = p[i - 1] * hx;
+        cout << ((x >> (31 - i)) & 1);
     }
+    cout << " ";
 }
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-    int n, q;
-    cin >> n >> q;
-    string s;
-    cin >> s;
-    unsigned long long a[n+1], b[n+1], p[n+1];
-    haxi(a, b, p, s, n);
-    //	for(int i = 0; i < n; i ++){
-    //		cout << "i = " << i << ", a[i] = " << a[i] << ", b[i] = " << b[i] << endl;
-    //	}
-    for (int i = 0; i < q; i++)
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> vec(39, vector<int>(n));
+    for(int i=0;i<n;i++) cin >> vec[0][i];
+    for(int i=1;i<39;i++)
     {
-        int l, r;
-        cin >> l >> r;
-        
-            unsigned long long bb = a[r] - a[l - 1] * p[r - l + 1];
-            unsigned long long pp = b[n - l + 1] - b[n - r] * p[r - l + 1];
-            // cout << "l = " << l << ", r = " << r << ", pp = " << pp << ", bb = " << bb << endl;
-            // cerr << bb << ' ' << pp << endl;
-            if (pp == bb)
-            {
-                cout << "Budada" << endl;
-            }
-            else if ((r - l + 1) % 2 == 0)
-            {
-                cout << "Budada" << endl;
-            }
-            else
-            {
-                cout << "Putata" << endl;
-            }
+        for(int j=0;j<n;j++)
+        {
+            vec[i][j] = vec[i-1][j] ^ vec[i][j-1];
+            f(vec[i][j]);
+        }
+        cout << endl;
     }
+    m %= 16;
+    // for(int i=0;i<n;i++)
+    // {
+    //     cout << vec[m][i] << " ";
+    // }
     return 0;
 }
