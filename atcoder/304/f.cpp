@@ -47,7 +47,7 @@ void solve()
     rep(i, 1, n) if(str[i] == '.') days.push_back(i);
     vector<int> dividers;
     rep(i, 1, n-1) if(n % i == 0) dividers.push_back(i);
-    map<int, int> A, M;
+    unordered_map<int, int> A, M;
     int ans = 0;
     for(auto x:dividers)
     {
@@ -55,9 +55,10 @@ void solve()
         for(auto y:days) st.insert(y % x);
         A[x] = quick_pow(2, x - SZ(st));
         int val = A[x];
-        for(auto&[k, v]:M) if(x % k == 0) val -= v;
+        for(auto&[k, v]:M) if(x % k == 0) val = (val - v + mod) % mod;
         M[x] = val;
         ans += val;
+        ans %= mod;
     }
     cout << ans << endl;
 }
