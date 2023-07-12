@@ -29,27 +29,34 @@ using ar2 = array<int, 2>;
 const int N = 10 + 1e5, mod = 1e9 + 7;
 void solve()
 {
-    int n, m; cin >> n >> m;
-    vector<vector<int>> g(n+1);
-    rep(i, 2, n) 
+    int n; cin >> n;
+    unordered_map<int, int> mp;
+    vector<int> vec(n);
+    int mx = 0;
+    for(auto &x : vec)
     {
-        int x; cin >> x;
-        g[x].push_back(i);
-    }
-
-    vector<int> vec(n+1, 0);
-    rep(i, 1, m)
-    {
-        int x, y; cin >> x >> y;
-        vec[x] = max(vec[x], y+1);
+        cin >> x;
+        mx = max(mx, x);
+        mp[x]++;
     }
     int ans = 0;
-    function<void(int, int)> dfs = [&](int ver, int dis) {
-        dis = max(vec[ver], dis);
-        if(dis) ans ++;
-        for(auto x : g[ver]) dfs(x, dis-1);
-    };
-    dfs(1, vec[1]);
+    for(auto [x, v] : mp)
+        for(int b = 2;  x * b * b <= mx; b ++)
+        {
+            int v1, v2, v3;
+            bool flag = true;
+            if(mp.count(x)) v1 = mp[x];
+            else flag = false;
+            if(mp.count(x * b)) v2 = mp[x * b];
+            else flag = false;
+            if(mp.count(x * b * b)) v3 = mp[x * b * b];
+            else flag = false;
+            if(flag)
+                ans += v1 * v2 * v3;
+        }
+    for(auto [k, v] : mp)
+        if(v >= 3)
+            ans += v * (v - 1) * (v - 2);
     cout << ans << endl;
 }
 signed main()
@@ -57,8 +64,8 @@ signed main()
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    // int t; cin >> t;
-    // while(t--)
+    int t; cin >> t;
+    while(t--)
         solve();
 
     return 0;

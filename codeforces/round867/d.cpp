@@ -29,36 +29,40 @@ using ar2 = array<int, 2>;
 const int N = 10 + 1e5, mod = 1e9 + 7;
 void solve()
 {
-    int n, m; cin >> n >> m;
-    vector<vector<int>> g(n+1);
-    rep(i, 2, n) 
-    {
-        int x; cin >> x;
-        g[x].push_back(i);
+    int n; cin >> n;
+    if(n == 1) {
+        cout << 1 << endl;
+        return;
     }
-
-    vector<int> vec(n+1, 0);
-    rep(i, 1, m)
-    {
-        int x, y; cin >> x >> y;
-        vec[x] = max(vec[x], y+1);
+    else if(n & 1) {
+        cout << -1 << endl;
+        return;
     }
-    int ans = 0;
-    function<void(int, int)> dfs = [&](int ver, int dis) {
-        dis = max(vec[ver], dis);
-        if(dis) ans ++;
-        for(auto x : g[ver]) dfs(x, dis-1);
-    };
-    dfs(1, vec[1]);
-    cout << ans << endl;
+    int a = 0, b = n - 1;
+    int now = 0;
+    int val = n;
+    do {
+        int x;
+        (now + x) % n == a;
+        x = a - now % n;
+        if(x <= 0) x += n;
+        cout << x << ' ';
+        now += x;
+        x = b - now % n;
+        if(x <= 0) x += n;
+        now += x;
+        a += 1, b -= 1;
+        cout << x << ' ';
+    } while(val -= 2);
+    
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    // int t; cin >> t;
-    // while(t--)
+    int t; cin >> t;
+    while(t--)
         solve();
 
     return 0;
