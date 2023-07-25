@@ -9,7 +9,7 @@
         "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
         "c": "gcc $fullFileName && ./a.out",
         "cpp": "g++ $fullFileName && ./a.out",
-        "python": "python3 -u",
+        "python": "python3 -u"
     },
     "vim.useSystemClipboard": true,
     "vim.normalModeKeyBindings": [
