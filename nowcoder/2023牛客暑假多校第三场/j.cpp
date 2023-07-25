@@ -12,6 +12,7 @@
 #include <iomanip>
 #include <array>
 #include <unordered_map>
+#include <list>
 #include <unordered_set>
 #define inf 0x3f3f3f3f
 #define linf 0x3f3f3f3f3f3f3f3fll
@@ -36,34 +37,10 @@ void solve()
         int u, v; cin >> u >> v;
         st.insert({u, v});
     }
-    map<int, int> mp;
     vector<vector<int>> vec;
     while(st.size())
     {
-        vector<pii> tmp;
-        for(auto [u, v] : st)
-        {
-            if(mp.count(u) and mp.count(v) and mp[u] > mp[v]) continue;
-            else if(mp.count(u) and mp.count(v)) cerr << "error" << endl;
-            else if(mp.count(u)) mp[v] = mp[u] + 1, cerr << v << ' ' << mp[v] << endl;
-            else if(mp.count(v)) mp[u] = mp[v] - 1, cerr << u << ' ' << mp[u] << endl;
-            else mp[u] = 1, mp[v] = 2, cerr << u << ' ' << mp[u] << endl, cerr << v << ' ' << mp[v] << endl;
-            tmp.emplace_back(u, v);
-        }
-        for(auto x : tmp) st.erase(x);
-        tmp.clear();
-        for(auto [v, val] : mp) tmp.emplace_back(val, v);
-        sort(tmp.begin(), tmp.end());
-        unordered_set<int> st1;
-        rep(i, 1, n) st1.insert(i);
-        vec.push_back(vector<int>());
-        for(auto [val, v] : tmp)
-        {
-            vec.back().push_back(v);
-            st1.erase(v);
-        }
-        for(auto x : st1) vec.back().push_back(x);
-        mp.clear();
+        
     }
     cout << vec.size() << endl;
     for(auto ver : vec)

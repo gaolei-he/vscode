@@ -1,0 +1,27 @@
+{
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true,
+    "editor.inlineSuggest.enabled": true,
+    "window.titleBarStyle": "custom",
+    "window.commandCenter": false,
+    "keyboard.dispatch": "keyCode",
+    "code-runner.executorMap": {
+        "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+        "c": "gcc $fullFileName && ./a.out",
+        "cpp": "g++ $fullFileName && ./a.out",
+        "python": "python3 -u",
+    },
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<C-A>"],
+            "after": ["g", "g", "V", "G"]
+        },
+        {
+            "before": ["<C-C>"],
+            "after": ["y"]
+        }
+    ],
+    "editor.renderWhitespace": "all",
+    "markdown-preview-enhanced.previewTheme": "github-dark.css"
+}
