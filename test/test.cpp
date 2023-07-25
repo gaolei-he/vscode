@@ -1,19 +1,26 @@
 #include <iostream>
-#include <queue>
-#include <functional>
 #include <vector>
-#include <cstring>
+#include <thread>
+#include <cstdlib>
+#include <sys/types.h>
+#include <unistd.h>
 using namespace std;
-struct Node
+int val;
+void task()
 {
-    void operator()(int a, int b) {
-        cout << a << ' ' << b << endl;
-    }
-};
-
+    for(int i=1;i<=1000000;i++) val ++;
+}
 int main()
 {
-    Node node;
-    node(1, 2);
+    vector<thread> vec;
+    for(int i=0;i<16;i++)
+    {
+        vec.push_back(thread(task));
+    }
+    for(auto &th:vec)
+    {
+        th.join();
+    }
+    cout << val << endl;
     return 0;
 }

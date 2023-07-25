@@ -1,31 +1,31 @@
-import asyncio
-import pyppeteer
-import requests
-import time
-
-async def loginfunction(loginUrl: str):
-    width, height = 1400, 800
-    browser = await pyppeteer.launch(headless=False,
-                                    userdataDir = '/tmp',
-                                    executablePath = '/usr/bin/google-chrome',
-                                     args=[f'--window-size={width},{height}'])
-    page = await browser.newPage()
-    await page.setViewport({'width': width, 'height': height})
-    await page.goto(loginUrl)
-    await page.waitForSelector("#normal_use_menu > ul > li:nth-child(1) > a", timeout=30000)
-    element = await page.querySelector("#normal_use_menu > ul > li:nth-child(1) > a")
-    await element.click()
-    # element = await page.waitForSelector('#theOptArea > tbody > tr > td:nth-child(2) > a', timeout=30000)
-    element = await page.querySelector("#reportArea > tbody > tr:nth-child(1) > td:nth-child(2) > a")
-    await element.click()
-    while True:
-        pass
-
-
-def main():
-    url = 'https://xk.henu.edu.cn/cas/login.action'
-    asyncio.get_event_loop().run_until_complete(loginfunction(url))
-
-
-if __name__ == '__main__':
-    main()
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+sm = sum(a)
+ans = [0]
+res = 0
+for _ in range(k):
+    op, x = map(int, input().split())
+    if op == 1:
+        res += x
+        sm += x * n
+    else:
+        res -= x
+        sm -= x * n
+    if res < 0:
+        ans.append(-res)
+s = [0 for i in range(len(ans))]
+print(ans)
+for i in range(1, len(ans)):
+    s[i] = s[i - 1] + ans[i]
+for v in a:
+    l, r = 1, len(ans) - 1
+    while l < r:
+        mid = l + r >> 1
+        if ans[mid] <= v:
+            l = mid + 1
+        else:
+            r = mid
+    if ans[l] <= v:
+        continue
+    sm += s[len(ans)-1] - s[l - 1] - (len(ans) - l) * v
+print(sm)
