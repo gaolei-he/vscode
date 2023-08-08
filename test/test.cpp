@@ -25,9 +25,13 @@ int quick_pow(int a, int b, int p)
     }
     return res;
 }
+template<typename T1, typename T2>
+decltype((*(T1*)0) + (*(T2*)0)) add(T1 a, T2 b)
+{
+    return a + b;
+}
 signed main()
 {
     int n, p;
-    std::cin >> n >> p;
-    std::cout << quick_pow(2, quick_pow(2, n, phi(p)), p) << std::endl;
+    std::cout << add(1, 1.0) << std::endl;
 }
