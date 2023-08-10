@@ -1,0 +1,43 @@
+{
+    //code-runner
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.executorMap": {
+        "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+        "c": "gcc $fullFileName && ./a.out",
+        "cpp": "g++ $fullFileName && ./a.out",
+        "python": "python3 -u",
+    },
+
+    //system-settings
+    "window.titleBarStyle": "custom",
+    "keyboard.dispatch": "keyCode",
+    "editor.inlineSuggest.enabled": true,
+    "workbench.colorTheme": "Default Dark+",
+    "editor.renderWhitespace": "all",
+
+    //github.copilot
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false,
+        "c": true
+    },
+
+    //markdown
+    "markdown-preview-enhanced.previewTheme": "github-dark.css",
+    "window.commandCenter": false,
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+        "editor.fontFamily": "'Ubuntu Mono'",
+        "editor.fontSize": 16
+    },
+
+    //vim
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": false,
+    "vim.handleKeys": {
+        "<C-r>": true,
+    }
+}
