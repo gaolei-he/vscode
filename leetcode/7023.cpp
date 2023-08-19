@@ -32,7 +32,7 @@ public:
         for(int i=3;i<=n;i++)
             if(lowbit(i) == i) lg[i] = lg[i - 1] + 1;
             else lg[i] = lg[i - 1];
-        for(int i=1;i<=n;i++) f[i][0] = {nums[i - 1], i};
+        for(int i=1;i<=n;i++) f[i][0] = {nums[i - 1], -i};
         int ed = 25;
         for(int j=1;j<=ed;j++)
             for(int i=1;i+(1<<j)-1<=n;i++)
@@ -55,7 +55,7 @@ public:
         vector<ar3> vec;
         function<void(int, int)> dfs = [&](int l, int r) {
             auto p = query(l, r);
-            int mid = p.second;
+            int mid = - p.second;
             vec.push_back({nums[mid - 1], vec1[mid - 1], (mid - l + 1) * (r - mid + 1)});
             if(l < mid) dfs(l, mid - 1);
             if(mid < r) dfs(mid + 1, r);
