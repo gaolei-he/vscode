@@ -15,10 +15,13 @@ for _ in range(int(input())):
             l = r = -1
     if l != -1:
         query.append((l, r))
-
-    for i in range(1, n):
-        a[i] += a[i - 1]
     ans = 0
+    if a[0] <= k:
+        ans = 1
+    for i in range(1, n):
+        if a[i] <= k:
+            ans = 1
+        a[i] += a[i - 1]
     for tmp, y in query:
         for x in range(tmp, y + 1):
             l, r = x, y
