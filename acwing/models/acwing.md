@@ -2830,7 +2830,7 @@ int main()
 
 $$N = p_1^{\alpha _1}p_2^{\alpha _2}\cdots p_k^{\alpha _k}$$
 N的约数个数
-$$(\alpha _1+1)(\alpha_2+2)\cdots(\alpha_k+1) $$
+$$(\alpha _1+1)(\alpha_2+1)\cdots(\alpha_k+1) $$
 
 ```c++
 /*

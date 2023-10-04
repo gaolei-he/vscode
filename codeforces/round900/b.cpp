@@ -26,24 +26,40 @@ using pii = pair<int, int>;
 using ar2 = array<int, 2>;
 // mt19937 mrand(random_device{}());
 // int rnd(int x) { return mrand() % x; }
-const int N = 10 + 1e5, mod = 1e9 + 7;
+const int N = 10 + 4e6, mod = 1e9 + 7;
+vector<int> primes;
+void f()
+{
+    vector<bool> vec(N - 9, false);
+    for (int i = 2; i < N - 10; i++)
+    {
+        if(!vec[i])
+            primes.push_back(i);
+            for(int j = 0; primes[j] <= (N - 10) / i; j++)
+            {
+                vec[primes[j] * i] = true;
+                if(i % primes[j] == 0) break;
+            }
+    }
+}
 void solve()
 {
-    int x11, y11, x12, y12, x21, y21, x22, y22;
-    cin >> x11 >> y11 >> x12 >> y12;
-    cin >> x21 >> y21 >> x22 >> y22;
-    double x1, y1, x2, y2;
-    x1 = (x11 + x12) / 2.0, y1 = (y11 + y12) / 2.0;
-    x2 = (x21 + x22) / 2.0, y2 = (y21 + y22) / 2.0;
-    double ans = fabs(x1 - x2) + fabs(y1 - y2);
-    ans -= sqrt(2) * sqrt((x2 - x21) * (x2 - x21) + (y2 - y21) * (y2 - y21));
-    cout << fixed << setprecision(10) << ans << endl;
+    int n; cin >> n;
+    for(auto x : primes)
+    {
+        if(x == 2) continue;
+        cout << x << ' ';
+        n --;
+        if(!n) break;
+    }
+    cout << endl;
 }
 signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
+    f();
     int t; cin >> t;
     while(t--)
         solve();

@@ -1,8 +1,10 @@
 #include <stdio.h>
-#include <signal.h>
+#include <math.h>
 int main()
 {
-    struct sigaction st;
-
+    double y;
+    scanf("%lf", &y);
+    double x = y * sin(y);
+    puts("success");
     return 0;
 }

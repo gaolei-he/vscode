@@ -38,8 +38,6 @@ public:
     }
     int getans(int x)
     {
-        // for(auto &[x, y] : vec) cerr << x << ' ' << y << endl;
-        // cerr << endl;
         int res = 0;
         for(auto p : mp)
         {
@@ -98,8 +96,6 @@ public:
             }
         }
         mp = tmp;
-        // for(auto [k, v] : mp) cerr << k << ' ' << v << endl;
-        // cerr << endl;
     }
 
 };
