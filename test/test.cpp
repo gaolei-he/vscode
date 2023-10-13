@@ -2,6 +2,8 @@
 using namespace std;
 int main()
 {
-    cout << rand() << endl;
+    int n; cin >> n;
+    int a[n];
+    cout << "Yes";
     return 0;
 }

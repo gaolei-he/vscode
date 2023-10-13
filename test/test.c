@@ -1,10 +1,14 @@
+#include <sys/wait.h>
 #include <stdio.h>
-#include <math.h>
-int main()
+#include <stdlib.h>
+main()
 {
-    double y;
-    scanf("%lf", &y);
-    double x = y * sin(y);
-    puts("success");
-    return 0;
+    if(fork() == 0)
+    {
+        printf("child process exit");
+        exit(0);
+    }
+
+    printf("ok");
+    wait(0);
 }

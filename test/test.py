@@ -1,2 +1,1 @@
-from random import randint
-print(randint(1, 100))
+编程之路长途漫，代码世界昏天暗
