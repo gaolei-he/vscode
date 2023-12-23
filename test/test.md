@@ -1,3 +1,35 @@
-对于给定的存取概率分布 $p$ 和 $q$，我们可以通过动态规划算法求解最优二叉搜索树。
+背景介绍：[雪花曲线](https://zh.wikipedia.org/wiki/%E7%A7%91%E8%B5%AB%E6%9B%B2%E7%B7%9A)
 
-设 $e_{i,j}$ 表示从第 $i$ 个虚拟关键字到第 $j$ 个虚拟关键字所形成的最优二叉搜索树的期望代价，$w_{i,j}$ 表示从第 $i$ 个虚拟关键字到第 $j$ 个虚拟关键字的概率和，即 $w_{i,j}=\sum_{k=i}^{j}p_k+\sum_{k=i-1}^{j}q_k$。根据最优子结构性质，$e_{i,j}$ 可以分解为 $e_{i,r-1}+e_{r+1,j}+w_{i,j}$ 的形式，其中 $i\leq r\leq j$。因此，我们可以通过枚举 $r$，计算出所有可能的 $e_{i,j}$，然后取其中的最小值作为 $e_{i,j}$ 的值。对于每个 $e_{i,j}$，我们还需要记录一个根节点 $r$，使得以 $r$ 为根节点的最优二叉搜索树可以形成 $[i,j]$ 区间内的所有关键字。最终，根据 $e_{0,n-1}$，我们可以得到整棵最优二叉搜索树的代价，而根据 $r_{0,n-1}$，我们可以构造出先序遍历序列。
+代码实现：[何高磊](https://github.com/gaolei-he)
+
+```python
+# 用Python在本地跑
+import turtle
+
+
+def snow(n, size):
+    if n == 0:
+        turtle.fd(size)
+        return
+    for angle in [0, 60, -120, 60]:
+        turtle.left(angle)
+        snow(n - 1, size / 3)
+
+
+# 输入n表示雪花曲线级数
+# 设为[1,4]即可，数值太大效果不好
+n = 3
+
+turtle.setup(1920, 1080)
+turtle.speed(1000)
+turtle.penup()
+turtle.goto(-300, 300)
+turtle.pendown()
+turtle.pensize(1)
+
+for angle in [0, 120, 120]:
+    turtle.right(angle)
+    snow(n, 600)
+
+turtle.done()
+```

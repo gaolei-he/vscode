@@ -1,0 +1,1 @@
+{"name":"Local: b","url":"/home/mechrevo/Documents/vscode/nowcoder/20231014/b.py","tests":[{"id":1697281845745,"input":"3 6\nR\nL\nLL\nLR\nRL\nRR","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/nowcoder/20231014/b.py","group":"local","local":true}
