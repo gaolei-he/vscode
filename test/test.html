@@ -1,69 +1,726 @@
-<!DOCTYPE html><html><head>
-      <title>server</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      
-      <link rel="stylesheet" href="file:////home/mechrevo/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.8.11/crossnote/dependencies/katex/katex.min.css">
-      
-      
-      
-      
-      
-      <style>
-      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
-/* Please visit the URL below for more information: */
-/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
 
-      </style>
-      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", function () {
-    // your code here
-  });
-</script></head><body for="html-export">
-    
-    
-      <div class="crossnote markdown-preview  ">
-      
-<p>背景介绍：<a href="https://zh.wikipedia.org/wiki/%E7%A7%91%E8%B5%AB%E6%9B%B2%E7%B7%9A">雪花曲线</a></p>
-<p>代码实现：<a href="https://github.com/gaolei-he">何高磊</a></p>
-<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 用Python在本地跑</span>
-<span class="token keyword keyword-import">import</span> turtle
+<html>
+<head>
+<title>
+A Tour of NTL: Examples: Big Integers </title>
+</head>
+
+<center>
+<img src="arrow1.gif" alt="[Previous]" align=bottom>
+ <a href="tour-examples.html"><img src="arrow2.gif" alt="[Up]" align=bottom></a> 
+<a href="tour-ex2.html"> <img src="arrow3.gif" alt="[Next]" align=bottom></a>
+</center>
+
+<h1> 
+<p align=center>
+A Tour of NTL: Examples: Big Integers
+</p>
+</h1>
+
+<p> <hr>  <p>
+
+The first example makes use of the class
+<tt>ZZ</tt>,
+which
+represents "big integers": signed, arbitrary length integers.
+This program reads two big integers <tt>a</tt> and <tt>b</tt>,
+and prints <tt>(a+1)*(b+1)</tt>.
+
+<!-- STARTPLAIN
+#include <NTL/ZZ.h>
+
+using namespace std;
+using namespace NTL;
+
+int main()
+{
+   ZZ a, b, c; 
+
+   cin >> a; 
+   cin >> b; 
+   c = (a+1)*(b+1);
+   cout << c << "\n";
+}
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000"><font face="monospace">
+<font color="#1773cc">#include </font><font color="#4a6f8b">&lt;NTL/ZZ.h&gt;</font><br>
+<br>
+<font color="#b02f60"><b>using</b></font>&nbsp;<font color="#008b00"><b>namespace</b></font>&nbsp;std;<br>
+<font color="#b02f60"><b>using</b></font>&nbsp;<font color="#008b00"><b>namespace</b></font>&nbsp;NTL;<br>
+<br>
+<font color="#008b00"><b>int</b></font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp; ZZ a, b, c; <br>
+<br>
+&nbsp;&nbsp; cin &gt;&gt; a; <br>
+&nbsp;&nbsp; cin &gt;&gt; b; <br>
+&nbsp;&nbsp; c = (a+<font color="#ff8b00">1</font>)*(b+<font color="#ff8b00">1</font>);<br>
+&nbsp;&nbsp; cout &lt;&lt; c &lt;&lt; <font color="#4a6f8b">&quot;</font><font color="#8a2ae2">\n</font><font color="#4a6f8b">&quot;</font>;<br>
+}<br>
+</font></font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
 
 
-<span class="token keyword keyword-def">def</span> <span class="token function">snow</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> size<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword keyword-if">if</span> n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        turtle<span class="token punctuation">.</span>fd<span class="token punctuation">(</span>size<span class="token punctuation">)</span>
-        <span class="token keyword keyword-return">return</span>
-    <span class="token keyword keyword-for">for</span> angle <span class="token keyword keyword-in">in</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        turtle<span class="token punctuation">.</span>left<span class="token punctuation">(</span>angle<span class="token punctuation">)</span>
-        snow<span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> size <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span>
+
+This program declares three variables <tt>a</tt>, <tt>b</tt>,
+and <tt>c</tt> of type <tt>ZZ</tt>.
+The values <tt>a</tt> and <tt>b</tt> are read from standard input.
+The value <tt>c</tt> is then computed as <tt>(a+1)*(b+1)</tt>.
+Finally, the value of <tt>c</tt> is printed to the standard output.
+
+<p>
+Note that one can compute with <tt>ZZ</tt>s much as with ordinary
+<tt>int</tt>s, in that most of the standard arithmetic and
+assignment operators can be used in a direct and natural way.
+The <tt>C++</tt> compiler and the NTL library routines 
+automatically take care
+of all the bookkeeping involved
+with memory management and temporary objects.
+
+<p>
+Note that by default, all of NTL's components
+are in the namespace <tt>NTL</tt>;
+with the "using directive" 
+<pre>
+   using namespace NTL;
+</pre>
+in the above example, one can access
+these components directly.
+
+<p> <hr> <p>
+
+Here's a program that reads a list of integers from standard 
+input and prints the sum of their squares.
+
+<!-- STARTPLAIN
+#include <NTL/ZZ.h>
 
 
-<span class="token comment"># 输入n表示雪花曲线级数</span>
-<span class="token comment"># 设为[1,4]即可，数值太大效果不好</span>
-n <span class="token operator">=</span> <span class="token number">3</span>
+using namespace std;
+using namespace NTL;
 
-turtle<span class="token punctuation">.</span>setup<span class="token punctuation">(</span><span class="token number">1920</span><span class="token punctuation">,</span> <span class="token number">1080</span><span class="token punctuation">)</span>
-turtle<span class="token punctuation">.</span>speed<span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>
-turtle<span class="token punctuation">.</span>penup<span class="token punctuation">(</span><span class="token punctuation">)</span>
-turtle<span class="token punctuation">.</span>goto<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span>
-turtle<span class="token punctuation">.</span>pendown<span class="token punctuation">(</span><span class="token punctuation">)</span>
-turtle<span class="token punctuation">.</span>pensize<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 
-<span class="token keyword keyword-for">for</span> angle <span class="token keyword keyword-in">in</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">120</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-    turtle<span class="token punctuation">.</span>right<span class="token punctuation">(</span>angle<span class="token punctuation">)</span>
-    snow<span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span>
+int main()
+{
+   ZZ acc, val;
 
-turtle<span class="token punctuation">.</span>done<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-      </div>
-      
-      
-    
-    
-    
-    
-    
-    
-  
-    </body></html>
+   acc = 0;
+   while (cin >> val) 
+      acc += val*val;
+
+   cout << acc << "\n";
+}
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000"><font face="monospace">
+<font color="#1773cc">#include </font><font color="#4a6f8b">&lt;NTL/ZZ.h&gt;</font><br>
+<br>
+<br>
+<font color="#b02f60"><b>using</b></font>&nbsp;<font color="#008b00"><b>namespace</b></font>&nbsp;std;<br>
+<font color="#b02f60"><b>using</b></font>&nbsp;<font color="#008b00"><b>namespace</b></font>&nbsp;NTL;<br>
+<br>
+<br>
+<font color="#008b00"><b>int</b></font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp; ZZ acc, val;<br>
+<br>
+&nbsp;&nbsp; acc = <font color="#ff8b00">0</font>;<br>
+&nbsp;&nbsp; <font color="#b02f60"><b>while</b></font>&nbsp;(cin &gt;&gt; val) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;acc += val*val;<br>
+<br>
+&nbsp;&nbsp; cout &lt;&lt; acc &lt;&lt; <font color="#4a6f8b">&quot;</font><font color="#8a2ae2">\n</font><font color="#4a6f8b">&quot;</font>;<br>
+}<br>
+</font></font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+
+
+Following the normal conventions for input operators,
+NTL's input operators will set the "fail bit" of the
+input stream if the input is missing or ill formed,
+and the condition in the <tt>while</tt> loop will detect this.
+
+
+
+
+<p>
+<hr>
+<p>
+
+Here's a simple modular exponentiation routine for computing
+<tt>a^e mod n</tt>.
+NTL already provides a more sophisticated one, though.
+
+<!-- STARTPLAIN
+ZZ PowerMod(const ZZ& a, const ZZ& e, const ZZ& n)
+{
+   if (e == 0) return ZZ(1);
+
+   long k = NumBits(e);
+
+   ZZ res;
+   res = 1;
+
+   for (long i = k-1; i >= 0; i~~) {
+      res = (res*res) % n;
+      if (bit(e, i) == 1) res = (res*a) % n;
+   }
+
+   if (e < 0)
+      return InvMod(res, n);
+   else
+      return res;
+}
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+ZZ PowerMod(<font color="#008b00"><b>const</b></font>&nbsp;ZZ&amp; a,&nbsp;<font color="#008b00"><b>const</b></font>&nbsp;ZZ&amp; e,&nbsp;<font color="#008b00"><b>const</b></font>&nbsp;ZZ&amp; n)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>if</b></font>&nbsp;(e ==&nbsp;<font color="#ff8c00">0</font>)&nbsp;<font color="#b03060"><b>return</b></font>&nbsp;ZZ(<font color="#ff8c00">1</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#008b00"><b>long</b></font>&nbsp;k = NumBits(e);<br>
+<br>
+&nbsp;&nbsp; ZZ res;<br>
+&nbsp;&nbsp; res =&nbsp;<font color="#ff8c00">1</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>for</b></font>&nbsp;(<font color="#008b00"><b>long</b></font>&nbsp;i = k-<font color="#ff8c00">1</font>; i &gt;=&nbsp;<font color="#ff8c00">0</font>; i--) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res = (res*res) % n;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>if</b></font>&nbsp;(bit(e, i) ==&nbsp;<font color="#ff8c00">1</font>) res = (res*a) % n;<br>
+&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>if</b></font>&nbsp;(e &lt;&nbsp;<font color="#ff8c00">0</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>return</b></font>&nbsp;InvMod(res, n);<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>else</b></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>return</b></font>&nbsp;res;<br>
+}<br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+
+Note that as an alternative, we could implement the inner loop
+as follows:
+
+<!-- STARTPLAIN
+   res = SqrMod(res, n);
+   if (bit(e, i) == 1) res = MulMod(res, a, n);
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+&nbsp;&nbsp; res = SqrMod(res, n);<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>if</b></font>&nbsp;(bit(e, i) ==&nbsp;<font color="#ff8c00">1</font>) res = MulMod(res, a, n);<br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+
+We could also write this as:
+
+<!-- STARTPLAIN
+   SqrMod(res, res, n);
+   if (bit(e, i) == 1) MulMod(res, res, a, n);
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+&nbsp;&nbsp; SqrMod(res, res, n);<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>if</b></font>&nbsp;(bit(e, i) ==&nbsp;<font color="#ff8c00">1</font>) MulMod(res, res, a, n);<br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+
+This illustrates an important point about NTL's programming interface.
+For every function in NTL, there is a procedural version that
+stores its result in its first argument.
+The reason for using the procedural variant is efficieny:
+on every iteration through the above loop, the functional form
+of <tt>SqrMod</tt> will cause a temporary <tt>ZZ</tt> object to
+be created and destroyed, whereas the procedural version 
+will not create any temporaries.
+Where performance is critical, the procedural version
+is to be preferred.
+Although it is usually silly to get too worked up about performance,
+it may be reasonable to argue that modular exponentiation
+is an important enough routine that it should be as fast as possible.
+
+<p>
+
+Note that when the functional version of a function
+can be naturally named with an operator, this is done.
+So for example, NTL provides a 3-argument <tt>mul</tt> routine
+for <tt>ZZ</tt> multiplication, and a functional version
+whose name is <tt>operator *</tt>, and not <tt>mul</tt>.
+
+<p>
+
+While we are taking about temporaries, consider the first version
+of the inner loop.
+Execution of the statement
+<!-- STARTPLAIN
+   res = (res*res) % n;
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+&nbsp;&nbsp; res = (res*res) % n;<br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+will result in the creation of two temporary objects,
+one for the product, and one for the result of the mod operation,
+whose value is copied into <tt>res</tt>.
+Of course, the compiler automatically generates the code for
+cleaning up temporaries and other local objects at the right time.
+The programmer does not have to worry about this.
+
+
+<p> <hr> <p>
+
+This example is a bit more interesting.
+The following program prompts the user for an input,
+and applies a simple probabilistic primality test.
+Note that NTL already provides a slightly more sophisticated
+primality test.
+
+<!-- STARTPLAIN
+#include <NTL/ZZ.h>
+
+using namespace std;
+using namespace NTL;
+
+long witness(const ZZ& n, const ZZ& x)
+{
+   ZZ m, y, z;
+   long j, k;
+
+   if (x == 0) return 0;
+
+   // compute m, k such that n-1 = 2^k * m, m odd:
+
+   k = 1;
+   m = n/2;
+   while (m % 2 == 0) {
+      k++;
+      m /= 2;
+   }
+
+   z = PowerMod(x, m, n); // z = x^m % n
+   if (z == 1) return 0;
+
+   j = 0;
+   do {
+      y = z;
+      z = (y*y) % n; 
+      j++;
+   } while (j < k && z != 1);
+
+   return z != 1 || y != n-1;
+}
+
+
+long PrimeTest(const ZZ& n, long t)
+{
+   if (n <= 1) return 0;
+
+   // first, perform trial division by primes up to 2000
+
+   PrimeSeq s;  // a class for quickly generating primes in sequence
+   long p;
+
+   p = s.next();  // first prime is always 2
+   while (p && p < 2000) {
+      if ((n % p) == 0) return (n == p);
+      p = s.next();  
+   }
+
+   // second, perform t Miller-Rabin tests
+
+   ZZ x;
+   long i;
+
+   for (i = 0; i < t; i++) {
+      x = RandomBnd(n); // random number between 0 and n-1
+
+      if (witness(n, x)) 
+         return 0;
+   }
+
+   return 1;
+}
+
+int main()
+{
+   ZZ n;
+
+   cout << "n: ";
+   cin >> n;
+
+   if (PrimeTest(n, 10))
+      cout << n << " is probably prime\n";
+   else
+      cout << n << " is composite\n";
+}
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+<font color="#1874cd">#include&nbsp;</font><font color="#4a708b">&lt;NTL/ZZ.h&gt;</font><br>
+<br>
+<font color="#b03060"><b>using</b></font>&nbsp;<font color="#008b00"><b>namespace</b></font>&nbsp;std;<br>
+<font color="#b03060"><b>using</b></font>&nbsp;<font color="#008b00"><b>namespace</b></font>&nbsp;NTL;<br>
+<br>
+<font color="#008b00"><b>long</b></font>&nbsp;witness(<font color="#008b00"><b>const</b></font>&nbsp;ZZ&amp; n,&nbsp;<font color="#008b00"><b>const</b></font>&nbsp;ZZ&amp; x)<br>
+{<br>
+&nbsp;&nbsp; ZZ m, y, z;<br>
+&nbsp;&nbsp;&nbsp;<font color="#008b00"><b>long</b></font>&nbsp;j, k;<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>if</b></font>&nbsp;(x ==&nbsp;<font color="#ff8c00">0</font>)&nbsp;<font color="#b03060"><b>return</b></font>&nbsp;<font color="#ff8c00">0</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#0000ee"><i>// compute m, k such that n-1 = 2^k * m, m odd:</i></font><br>
+<br>
+&nbsp;&nbsp; k =&nbsp;<font color="#ff8c00">1</font>;<br>
+&nbsp;&nbsp; m = n/<font color="#ff8c00">2</font>;<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>while</b></font>&nbsp;(m %&nbsp;<font color="#ff8c00">2</font>&nbsp;==&nbsp;<font color="#ff8c00">0</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m /=&nbsp;<font color="#ff8c00">2</font>;<br>
+&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp; z = PowerMod(x, m, n);&nbsp;<font color="#0000ee"><i>// z = x^m % n</i></font><br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>if</b></font>&nbsp;(z ==&nbsp;<font color="#ff8c00">1</font>)&nbsp;<font color="#b03060"><b>return</b></font>&nbsp;<font color="#ff8c00">0</font>;<br>
+<br>
+&nbsp;&nbsp; j =&nbsp;<font color="#ff8c00">0</font>;<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>do</b></font>&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = z;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z = (y*y) % n;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j++;<br>
+&nbsp;&nbsp; }&nbsp;<font color="#b03060"><b>while</b></font>&nbsp;(j &lt; k &amp;&amp; z !=&nbsp;<font color="#ff8c00">1</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>return</b></font>&nbsp;z !=&nbsp;<font color="#ff8c00">1</font>&nbsp;|| y != n-<font color="#ff8c00">1</font>;<br>
+}<br>
+<br>
+<br>
+<font color="#008b00"><b>long</b></font>&nbsp;PrimeTest(<font color="#008b00"><b>const</b></font>&nbsp;ZZ&amp; n,&nbsp;<font color="#008b00"><b>long</b></font>&nbsp;t)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>if</b></font>&nbsp;(n &lt;=&nbsp;<font color="#ff8c00">1</font>)&nbsp;<font color="#b03060"><b>return</b></font>&nbsp;<font color="#ff8c00">0</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#0000ee"><i>// first, perform trial division by primes up to 2000</i></font><br>
+<br>
+&nbsp;&nbsp; PrimeSeq s;&nbsp;&nbsp;<font color="#0000ee"><i>// a class for quickly generating primes in sequence</i></font><br>
+&nbsp;&nbsp;&nbsp;<font color="#008b00"><b>long</b></font>&nbsp;p;<br>
+<br>
+&nbsp;&nbsp; p = s.next();&nbsp;&nbsp;<font color="#0000ee"><i>// first prime is always 2</i></font><br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>while</b></font>&nbsp;(p &amp;&amp; p &lt;&nbsp;<font color="#ff8c00">2000</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>if</b></font>&nbsp;((n % p) ==&nbsp;<font color="#ff8c00">0</font>)&nbsp;<font color="#b03060"><b>return</b></font>&nbsp;(n == p);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = s.next();&nbsp;&nbsp;<br>
+&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#0000ee"><i>// second, perform t Miller-Rabin tests</i></font><br>
+<br>
+&nbsp;&nbsp; ZZ x;<br>
+&nbsp;&nbsp;&nbsp;<font color="#008b00"><b>long</b></font>&nbsp;i;<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>for</b></font>&nbsp;(i =&nbsp;<font color="#ff8c00">0</font>; i &lt; t; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = RandomBnd(n);&nbsp;<font color="#0000ee"><i>// random number between 0 and n-1</i></font><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>if</b></font>&nbsp;(witness(n, x))&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>return</b></font>&nbsp;<font color="#ff8c00">0</font>;<br>
+&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>return</b></font>&nbsp;<font color="#ff8c00">1</font>;<br>
+}<br>
+<br>
+<font color="#008b00"><b>int</b></font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp; ZZ n;<br>
+<br>
+&nbsp;&nbsp; cout &lt;&lt;&nbsp;<font color="#4a708b">&quot;n: &quot;</font>;<br>
+&nbsp;&nbsp; cin &gt;&gt; n;<br>
+<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>if</b></font>&nbsp;(PrimeTest(n,&nbsp;<font color="#ff8c00">10</font>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; n &lt;&lt;&nbsp;<font color="#4a708b">&quot; is probably prime</font><font color="#8a2be2">\n</font><font color="#4a708b">&quot;</font>;<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>else</b></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; n &lt;&lt;&nbsp;<font color="#4a708b">&quot; is composite</font><font color="#8a2be2">\n</font><font color="#4a708b">&quot;</font>;<br>
+}<br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+
+Note that in NTL, there are typically a number of ways to
+compute the same thing.
+For example, consider the computation of <tt>m</tt> and <tt>k</tt>
+in function <tt>witness</tt>.
+We could have written it thusly:
+
+<!-- STARTPLAIN
+   k = 1;
+   m = n >> 1;
+   while (!IsOdd(m)) {
+      k++;
+      m >>= 1;
+   }
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+&nbsp;&nbsp; k =&nbsp;<font color="#ff8c00">1</font>;<br>
+&nbsp;&nbsp; m = n &gt;&gt;&nbsp;<font color="#ff8c00">1</font>;<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>while</b></font>&nbsp;(!IsOdd(m)) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m &gt;&gt;=&nbsp;<font color="#ff8c00">1</font>;<br>
+&nbsp;&nbsp; }<br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+
+It turns out that this is actually not significantly more 
+efficient than the original version, because the implementation
+optimizes multiplication and division by 2.
+
+<p>
+
+The following is more efficient:
+
+<!-- STARTPLAIN
+   k = 1;
+   while (bit(n, k) == 0) k++;
+   m = n >> k;
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+&nbsp;&nbsp; k =&nbsp;<font color="#ff8c00">1</font>;<br>
+&nbsp;&nbsp;&nbsp;<font color="#b03060"><b>while</b></font>&nbsp;(bit(n, k) ==&nbsp;<font color="#ff8c00">0</font>) k++;<br>
+&nbsp;&nbsp; m = n &gt;&gt; k;<br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+
+As it happens, there is a built-in NTL routine that does just what we want:
+
+<!-- STARTPLAIN
+   m = n-1;
+   k = MakeOdd(m);
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+&nbsp;&nbsp; m = n-<font color="#ff8c00">1</font>;<br>
+&nbsp;&nbsp; k = MakeOdd(m);<br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+
+
+
+<p> <hr> <p>
+
+Having seen a number of examples involving <tt>ZZ</tt>s,
+let's look at the <tt>ZZ</tt> interface in a bit more detail.
+
+<p>
+
+<b>
+Constructors, assignment, and conversions
+</b>
+
+<p>
+
+When you declare an object of type <tt>ZZ</tt>, 
+the default constructor initializes to the value <tt>0</tt>.
+As we have already seen, there is an assignment operator that
+allows one to copy the value of one <tt>ZZ</tt> to another.
+Note that these copies (like almost all copies in NTL) are "deep",
+i.e., the actual data is copied, and not just a pointer.
+Of course, if the amount of space allocated by the destination
+of the assignment is insufficient to hold the value of the source,
+space is automatically re-allocated.
+
+<p>
+One can also assign a value of type <tt>long</tt> to a <tt>ZZ</tt>:
+<!-- STARTPLAIN
+   ZZ x;
+   x = 1;
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+&nbsp;&nbsp; ZZ x;<br>
+&nbsp;&nbsp; x =&nbsp;<font color="#ff8c00">1</font>;<br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+
+<p>
+Note that one cannot write
+<!-- STARTPLAIN
+   ZZ x = 1;  // error
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+&nbsp;&nbsp; ZZ x =&nbsp;<font color="#ff8c00">1</font>;&nbsp;&nbsp;<font color="#0000ee"><i>// error</i></font><br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+to initialize a <tt>ZZ</tt>.
+Instead, one could write
+<!-- STARTPLAIN
+   ZZ x = ZZ(1);
+   ZZ y(1);
+   ZZ z{1}; // C++11 only
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+&nbsp;&nbsp; ZZ x = ZZ(<font color="#ff8c00">1</font>);<br>
+&nbsp;&nbsp; ZZ y(<font color="#ff8c00">1</font>);<br>
+&nbsp;&nbsp; ZZ z{<font color="#ff8c00">1</font>};&nbsp;<font color="#0000ee"><i>// C++11 only</i></font><br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+using the constructor that allows one to <i>explicitly</i>
+construct a <tt>ZZ</tt> from a <tt>long</tt>.
+
+<p>
+Alternatively, one could write this as:
+<!-- STARTPLAIN
+   ZZ x = conv<ZZ>(1);
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+&nbsp;&nbsp; ZZ x = conv&lt;ZZ&gt;(<font color="#ff8c00">1</font>);<br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+This is an example of one of NTL's conversion routines.
+For very large constants, one can write:
+<!-- STARTPLAIN
+   ZZ x = conv<ZZ>("99999999999999999999");
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+&nbsp;&nbsp; ZZ x = conv&lt;ZZ&gt;(<font color="#4a708b">&quot;99999999999999999999&quot;</font>);<br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+These examples illustrate conversion routines in their 
+functional forms.
+Conversion routines are also available in procedural form:
+<!-- STARTPLAIN
+   ZZ x;
+   conv(x, 1);
+   conv(x, "99999999999999999999");
+ENDPLAIN -->
+<!-- STARTPRETTY {{{ -->
+<p><p><table cellPadding=10px><tr><td><font color="#000000">
+<font face="monospace">
+&nbsp;&nbsp; ZZ x;<br>
+&nbsp;&nbsp; conv(x,&nbsp;<font color="#ff8c00">1</font>);<br>
+&nbsp;&nbsp; conv(x,&nbsp;<font color="#4a708b">&quot;99999999999999999999&quot;</font>);<br>
+</font>
+</font></td></tr></table><p><p>
+<!-- }}} ENDPRETTY -->
+
+
+<p>
+<b>
+Functionality
+</b>
+<p>
+
+All of the basic arithmetic operators are supported,
+including comparison, arithmetic, shift, and bit-wise logical operations.
+One can mix <tt>ZZ</tt>s and <tt>long</tt>s in any expresion in
+a natural way.
+NTL does not support implicit type conversion;
+rather, for basic operations, it simply overloads the operators
+or functions in a way to achieve a kind of "promotion logic":
+if one input is a <tt>ZZ</tt> and the other is a <tt>long</tt>
+(or something that implicitly converts to a <tt>long</tt>, like 
+an <tt>int</tt>), the <tt>long</tt> input is effectively converted
+to a <tt>ZZ</tt>.
+Moreover, wherever possible, the implementation does this 
+as efficiently as possible, and usually avoids the creation
+of a temporary <tt>ZZ</tt>.
+
+<p>
+There are also procedural versions for all the basic arithmetic
+operations:
+<pre>
+   add, sub, negate, mul, sqr, div, rem, DivRem, 
+   LeftShift, RightShift,
+   bit_and, bit_or, bit_xor
+</pre>
+
+<p>
+There are many other routines.
+Here is a brief summary:
+<ul>
+<li>
+<tt>GCD</tt> -- computes greatest common divisor of two integers
+<li>
+<tt>XGCD</tt> -- extended Euclidean algorithm
+<li>
+<tt>AddMod</tt>, <tt>SubMod</tt>, <tt>NegateMod</tt>, 
+<tt>MulMod</tt>, <tt>SqrMod</tt>, <tt>InvMod</tt>,
+<tt>PowerMod</tt> -- routines for modular arithmetic,
+including inversion and exponentiation
+<li>
+<tt>NumBits</tt> -- length of binary representation
+<li>
+<tt>bit</tt> -- extract a bit
+<li>
+<tt>ZZFromBytes</tt>, <tt>BytesFromZZ</tt> -- 
+convert between octet strings and <tt>ZZ</tt>s
+<li>
+<tt>RandomBnd</tt>, <tt>RandomBits</tt>, <tt>RandomLen</tt> --
+routines for generating pseudo-random numbers
+<li>
+<tt>GenPrime</tt>, <tt>ProbPrime</tt> -- routines for generating primes
+and testing primality
+<li>
+<tt>power</tt> -- (non-modular) exponentiation
+<li>
+<tt>SqrRoot</tt> -- integer part of square root
+<li>
+<tt>Jacobi</tt>, <tt>SqrRootMod</tt> -- Jacobi symbol and modular
+square root
+</ul>
+
+<p>
+Most of these functions also have pure <tt>long</tt> versions as 
+well, and as usual, there are both functional and procedural
+variants.
+
+<p>
+There are other functions as well.
+See <a href="ZZ.cpp.html"><tt>ZZ.txt</tt></a> for complete details.
+Also see <a href="tools.cpp.html"><tt>tools.txt</tt></a> for some basic
+services provided by NTL.
+
+
+<p>
+<center>
+<img src="arrow1.gif" alt="[Previous]" align=bottom>
+ <a href="tour-examples.html"><img src="arrow2.gif" alt="[Up]" align=bottom></a> 
+<a href="tour-ex2.html"> <img src="arrow3.gif" alt="[Next]" align=bottom></a>
+</center>
+
+</body>
+</html>
