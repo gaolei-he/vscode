@@ -1,31 +1,12 @@
-# 用Python在本地跑
-import turtle
+from PIL import Image
+img = Image.open('/home/mechrevo/Pictures/myscreenshot/GNU_not_Unix.png')
+w, h = img.size
+piexls = img.load()
+for x in range(w):
+    for y in range(h):
+        # if piexls[x, y] == (0xff, 0xff, 0xff):
+            # piexls[x, y] = (0x80, 0x80, 0x80)
+        r, g, b = piexls[x, y]
+        piexls[x, y] = (r//2, g//2, b//2)
 
-
-def snow(n, size):
-    if n == 0:
-        turtle.fd(size)
-        return
-    for angle in [0, 60, -120, 60]:
-        turtle.left(angle)
-        snow(n - 1, size / 3)
-
-
-# 输入n表示雪花曲线级数
-# 设为[1,4]即可，数值太大效果不好
-n = 3
-
-turtle.setup(1920, 1080)
-turtle.speed(1000)
-turtle.penup()
-turtle.goto(-300, 300)
-turtle.pendown()
-turtle.pensize(1)
-
-for angle in [0, 120, 120]:
-    turtle.right(angle)
-    snow(n, 600)
-
-turtle.done()
-
-
+img.show()
