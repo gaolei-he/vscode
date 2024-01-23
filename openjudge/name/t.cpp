@@ -1,26 +1,20 @@
 #include <iostream>
 #include <vector>
-class Node
+class A
 {
-private:
-    int member;
 public:
-    Node()
+    int val;
+public:
+    A(int x):val(x){}
+    A(const A &a)
     {
-        member = 1;
-    }
-    ~Node()
-    {
-        std::cout << "decalled" << std::endl;
+        val = a.val + 1;
     }
 };
-Node f()
-{
-    Node a;
-    return a;
-}
 int main()
 {
-    auto t = f();
+    A a(10);
+    A b = a;
+    std::cout << b.val;
     return 0;
 }
