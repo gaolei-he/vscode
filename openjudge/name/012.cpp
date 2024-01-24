@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+struct A {
+    int v;
+    A(int vv) : v(vv) {}
+    // 在此处补充你的代码
+    const A *getPointer() const {return this;}
+    void f() {cout << "Yes\n";}
+};
+
+int main() {
+    const A a(10);
+    A b(10);
+    b.f();
+    const A* p = a.getPointer();
+    cout << p->v << endl;
+    return 0;
+}
