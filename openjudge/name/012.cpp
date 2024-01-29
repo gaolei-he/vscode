@@ -11,8 +11,6 @@ struct A {
 
 int main() {
     const A a(10);
-    A b(10);
-    b.f();
     const A* p = a.getPointer();
     cout << p->v << endl;
     return 0;

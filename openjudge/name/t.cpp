@@ -14,7 +14,8 @@ A f()
 }
 int main()
 {
-    A a(1);
-    a = f();
+    int* p = new int;
+    if(p) delete p;
+    if(p) delete p;
     return 0;
 }
