@@ -26,7 +26,6 @@ class MyString {
         return out;
     }
     MyString operator=(const char* s) {
-        cout << "called" << endl;
         if(p) delete[] p;
         p = new char[strlen(s) + 1];
         strcpy(p, s);
