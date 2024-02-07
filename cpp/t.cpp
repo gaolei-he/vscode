@@ -23,24 +23,13 @@ void reader() {
     // 共享锁 允许多个线程持有
     // 共享锁的意义在于 对于多线程同时访问不会造成数据竞争的情况，对资源上共享锁
     // 用以提高程序的并发性
-    int data;
-
-    // 读取变量使用共享锁，提高程序并发性
-    {
-        std::shared_lock<std::shared_mutex> lock(rwMutex);
-        data = counter;
-    }
-
-    // 输出时必须使用互斥锁，输出是互斥行为，同一时刻只能由一个线程持有
-    {
-        std::lock_guard<std::shared_mutex> lck(rwMutex);
-        std::cout << "Reader Thread ID: " << std::this_thread::get_id()
-                  << " - Shared value: " << data << std::endl;
-    }
+    std::shared_lock<std::shared_mutex> lock(rwMutex);
+    std::cout << "Reader Thread ID: " << std::this_thread::get_id()
+              << " - Shared value: " << counter << std::endl;
 }
 
 void writer() {
-    // 写锁，互斥锁，同一时刻只能由一个线程持有
+    // 互斥锁，同一时刻只能由一个线程持有
     std::lock_guard<std::shared_mutex> lock(rwMutex);
     counter++;
     std::cout << "Writer Thread ID: " << std::this_thread::get_id()
@@ -54,7 +43,7 @@ int main() {
     for (int i = 0; i < 16; i++) readers.emplace_back(reader);
 
     th.join();
-    for (auto& t : readers) t.join();
+    for(auto& t : readers) t.join();
 
     return 0;
 }

@@ -1,0 +1,1 @@
+{"name":"Local: a","url":"/home/mechrevo/Documents/vscode/nowcoder/2024寒假多校/round1/a.cpp","tests":[{"id":1706853946534,"input":"5\n6\ndafasa\n6\ndDFfSs\n6\nsfdDSF\n6\nDFSDFS\n3\ndfs","output":"0 1\n1 1\n0 0\n1 0\n0 1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/nowcoder/2024寒假多校/round1/a.cpp","group":"local","local":true}
