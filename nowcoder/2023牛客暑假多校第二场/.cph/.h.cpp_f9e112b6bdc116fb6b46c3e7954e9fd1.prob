@@ -1,1 +1,0 @@
-{"name":"Local: h","url":"/home/mechrevo/Documents/vscode/nowcoder/2023牛客暑假多校第二场/h.cpp","tests":[{"id":1689924020298,"input":"10 3\nBAABABABBA\n1 8 0001\n3 5 110\n6 10 0101010101","output":"0011\n111\n0101010110"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/nowcoder/2023牛客暑假多校第二场/h.cpp","group":"local","local":true}

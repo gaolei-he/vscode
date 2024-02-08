@@ -1,1 +1,0 @@
-{"name":"Local: a","url":"/home/mechrevo/Documents/vscode/codeforces/round878/a.py","tests":[{"id":1688519981331,"input":"3\n8\nabacabac\n5\nqzxcq\n20\nccooddeeffoorrcceess","output":"ac\nq\ncodeforces"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/codeforces/round878/a.py","group":"local","local":true}

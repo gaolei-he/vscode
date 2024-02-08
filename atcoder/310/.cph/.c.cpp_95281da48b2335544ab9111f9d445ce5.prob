@@ -1,1 +1,0 @@
-{"name":"Local: c","url":"/home/mechrevo/Documents/vscode/atcoder/310/c.cpp","tests":[{"id":1689423531649,"input":"6\na\nabc\nde\ncba\nde\nabc\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/atcoder/310/c.cpp","group":"local","local":true}

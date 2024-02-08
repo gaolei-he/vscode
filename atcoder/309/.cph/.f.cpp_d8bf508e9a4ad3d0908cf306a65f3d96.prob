@@ -1,1 +1,0 @@
-{"name":"Local: f","url":"/home/mechrevo/Documents/vscode/atcoder/309/f.cpp","tests":[{"id":1688975954709,"input":"3\n19 8 22\n10 25 12\n15 24 11\n","output":""},{"id":1688975971033,"input":"2\n1 1 2\n1 2 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/atcoder/309/f.cpp","group":"local","local":true}
