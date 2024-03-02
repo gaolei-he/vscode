@@ -1,8 +1,12 @@
 from random import randint
-n = randint(1, 100)
-print(n)
+n, m, q = randint(1, 10), randint(1, 10), randint(1, 10)
+print(n, m, q)
+data = "red"
 for i in range(n):
-    n = randint(1, 10**5)
-    S = randint(n, 10**9)
-    k = randint(0, n-1)
-    print(n, S, k)
+    for j in range(m):
+        print(data[randint(0, 2)], end="")
+    print()
+for i in range(q):
+    x1, y1 = randint(1, n), randint(1, m)
+    x2, y2 = randint(x1, n), randint(y1, m)
+    print(x1, y1, x2, y2)
