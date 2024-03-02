@@ -1,0 +1,1 @@
+{"name":"Local: g","url":"/home/mechrevo/Documents/vscode/nowcoder/2024寒假多校/round6/g.cpp","tests":[{"id":1709195491141,"input":"3\n5 8 2\n4 9 1\n6 7 3","output":""},{"id":1709197874461,"input":"1\n5 9 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/nowcoder/2024寒假多校/round6/g.cpp","group":"local","local":true}
