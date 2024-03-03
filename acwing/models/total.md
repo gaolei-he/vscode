@@ -26,6 +26,7 @@
     - [树状数组](#树状数组)
     - [线段树](#线段树)
     - [LCA](#lca)
+    - [PBDS使用实例](#PBDS使用实例)
   - [背包](#背包)
     - [01背包](#01背包)
     - [完全背包](#完全背包)
@@ -714,6 +715,63 @@ int query(int a, int b)//返回a，b的最近公共祖先
             b = fa[b][k];
         }
     return fa[a][0];
+}
+```
+
+### PBDS使用实例
+
+```cpp
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+#include <iostream>
+using namespace std;
+using namespace __gnu_pbds;
+int main()
+{
+    tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> tr;
+    tr.insert(1);
+    tr.insert(2);
+    tr.insert(4);
+    // 树中元素 1，2，4
+    auto it = tr.insert(3); // pair<point_iterator, bool>
+    cout << *it.first << endl; // 3
+    cout << it.second << endl; // 1
+
+    bool flag = tr.erase(3); // bool
+    cout << flag << endl; // 1
+
+    // 树中元素 1，2，4
+    // order_of_key(x) 返回小于x的元素个数(int)
+    int cnt = tr.order_of_key(3);
+    cout << cnt << endl; // 2
+    cnt = tr.order_of_key(2);
+    cout << cnt << endl; // 1
+
+    // 树中元素 1，2，4
+    // find_by_order(k) 返回指向第k小的元素的迭代器 (从0开始)
+    auto it2 = tr.find_by_order(1); // point_iterator
+    cout << *it2 << endl; // 2
+
+    auto it3 = tr.lower_bound(2); // point_iterator
+    cout << *it3 << endl; // 2
+    it3 = tr.upper_bound(2); // point_iterator
+    cout << *it3 << endl; // 4
+
+    tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> tr1;
+    tr1.insert(8);
+    tr1.insert(16);
+    tr1.insert(32);
+
+    // tr.join(tr1) 将tr1合并到tr中，tr1中的元素会被删除
+    tr.join(tr1);
+    for(auto it : tr)
+        cout << it << endl; // 1 2 4 8 16 32
+
+    tr.split(4, tr1); // 将tr中小于等于4的元素分离出来，放到tr1中
+    for(auto it : tr)
+        cout << it << endl; // 1, 2, 4
+    
+    return 0;
 }
 ```
 
