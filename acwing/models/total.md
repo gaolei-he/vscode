@@ -10,6 +10,7 @@
     - [快速幂](#快速幂)
     - [欧拉筛](#欧拉筛)
     - [埃氏筛法](#埃氏筛法)
+    - [计算线段与圆的交点数量](#计算线段与圆的交点数量)
   - [图论](#图论)
     - [Dijkstra1](#dijkstra1)
     - [Dijkstra2](#dijkstra2)
@@ -178,6 +179,59 @@ void get_prime(int n)
                 st[j]=true;
         }
     }
+}
+```
+
+### 计算线段与圆的交点数量
+
+```cpp
+using i64 = long long;
+using i128 = __int128;
+
+i128 dist(i64 x1, i64 y1, i64 x2, i64 y2) {
+    return ((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+}
+
+int calc(i64 x1, i64 y1, i64 x2, i64 y2, i64 x, i64 y, i64 r) {
+    bool flag1 = false, flag2 = false, flag3 = false, flag4 = false;
+    if (dist(x1, y1, x, y) < r * r) flag1 = true;  // 圆内
+    if (dist(x2, y2, x, y) < r * r) flag2 = true;
+    if (dist(x1, y1, x, y) == r * r) flag3 = true;  // 圆上
+    if (dist(x2, y2, x, y) == r * r) flag4 = true;
+    if (flag1 and flag2) {
+        return 0;  // 两点都在圆内
+    } else if (flag1 or flag2) {
+        return 1;  // 一点在圆内，一点不在，必有一个交点
+    }
+
+    i128 A = dist(x1, y1, x2, y2) * r * r;
+    // 叉乘结果的值替代absinθ
+    i128 B = (x1 - x) * (y2 - y) - (x2 - x) * (y1 - y);
+    B = B * B;
+    // 圆心到直线距离大于半径，肯定没有交点
+    if (B > A) {
+        return 0;
+    }
+
+    i128 angle1 = (x - x1) * (x2 - x1) + (y - y1) * (y2 - y1);
+    i128 angle2 = (x - x2) * (x1 - x2) + (y - y2) * (y1 - y2);
+
+    // 如果两个角都是锐角，说明此时直线和圆的关系是相切或相交
+    if (angle1 > 0 and angle2 > 0) {
+        if (A == B) {
+            return 1;  // 相切
+        } else {
+            return 2;  // 相交
+        }
+    } else {
+        // 否则如果存在至少一个圆上的点也可以说明是有一个交点的
+        if (flag3 or flag4) {
+            return 1;
+        } else {
+            return 0;  // 相离
+        }
+    }
+    return 0;
 }
 ```
 
