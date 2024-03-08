@@ -1,12 +1,24 @@
-from PIL import Image
-img = Image.open('/home/mechrevo/Pictures/myscreenshot/GNU_not_Unix.png')
-w, h = img.size
-piexls = img.load()
-for x in range(w):
-    for y in range(h):
-        # if piexls[x, y] == (0xff, 0xff, 0xff):
-            # piexls[x, y] = (0x80, 0x80, 0x80)
-        r, g, b = piexls[x, y]
-        piexls[x, y] = (r//2, g//2, b//2)
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-img.show()
+'''开机自动登录校园网'''
+
+import asyncio
+import pyppeteer
+import time
+tmp_dir = '/tmp'  # 临时文件夹
+chrome_path = '/usr/bin/google-chrome'  # chrome浏览器路径
+async def f():
+    width, height = 1400, 800 # 窗口大小
+    browser = await pyppeteer.launch(headless=False,
+                                    userdataDir = tmp_dir,
+                                    executablePath = chrome_path,
+                                        args=[f'--window-size={width},{height}'])
+    for i in range(11, 51):
+        page = await browser.newPage()
+        await page.setViewport({'width': width, 'height': height})
+        url = f"https://www.acwing.com/problem/{i}/?show_algorithm_tags=0"
+        await page.goto(url)
+
+    time.sleep(1)
+asyncio.get_event_loop().run_until_complete(f())
