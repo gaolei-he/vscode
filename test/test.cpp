@@ -4,6 +4,7 @@
 #include <shared_mutex>
 #include <thread>
 #include <vector>
+#include <queue>
 
 std::shared_mutex rwMutex;
 int counter;
@@ -48,13 +49,10 @@ void writer() {
 }
 
 int main() {
-    std::thread th(writer);
-
-    std::vector<std::thread> readers;
-    for (int i = 0; i < 16; i++) readers.emplace_back(reader);
-
-    th.join();
-    for (auto& t : readers) t.join();
+    std::priority_queue<int, std::vector<int>, std::greater<int>> q;
+    q.push(1);
+    q.push(2);
+    std::cout << q.top();
 
     return 0;
 }
