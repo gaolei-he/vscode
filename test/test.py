@@ -14,10 +14,10 @@ async def f():
                                     userdataDir = tmp_dir,
                                     executablePath = chrome_path,
                                         args=[f'--window-size={width},{height}'])
-    for i in range(11, 51):
+    for i in range(11, 13):
         page = await browser.newPage()
         await page.setViewport({'width': width, 'height': height})
-        url = f"https://www.acwing.com/problem/{i}/?show_algorithm_tags=0"
+        url = "https://www.baidu.com"
         await page.goto(url)
 
     time.sleep(1)
