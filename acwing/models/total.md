@@ -444,25 +444,63 @@ int main()
 ### 字符串hash
 
 ```cpp
-typedef unsigned long long ll;
-const int N = 1e5+10, P = 131;
 
-int n, m;
-char str[N];
-ll h[N], p[N];
-ll get(int l, int r)//返回字符串[l, r]的hash值
-{
-    return h[r] - h[l-1] * p[r-l+1];
-}
-void init() //初始化
-{
-    p[0] = 1;
-    for(int i=1;i<=n;i++)
-    {
-        h[i] = h[i-1] * P + str[i];
-        p[i] = p[i-1] * P;
+#include <bits/stdc++.h>
+
+using i64 = long long;
+
+class HASH {
+   private:
+    using ui64 = unsigned long long;
+    using i64 = long long;
+    std::string s;
+    int P1 = 131, P2 = 11311;
+    ui64 mod = 1'000'000'007;
+    std::vector<ui64> h1, h2, p1;
+    std::vector<i64> h3, h4, p2;
+    int n;
+
+   public:
+    // s的下标从0开始
+    HASH(const std::string& s) {
+        this->s = s;
+        n = s.size();
+        h1.resize(n + 1);
+        h2.resize(n + 1);
+        h3.resize(n + 1);
+        h4.resize(n + 1);
+        p1.resize(n + 1);
+        p2.resize(n + 1);
+        p1[0] = p2[0] = 1;
+        for (int i = 1; i <= n; i++) {
+            h1[i] = h1[i - 1] * P1 + s[i - 1];
+            p1[i] = p1[i - 1] * P1;
+
+            h3[i] = h3[i - 1] * P2 % mod + s[i - 1];
+            h3[i] %= mod;
+            p2[i] = p2[i - 1] * P2;
+            p2[i] %= mod;
+        }
+        for (int i = n; i > 0; i--) {
+            h2[n - i + 1] = h2[n - i] * P1 + s[i - 1];
+
+            h4[n - i + 1] = h4[n - i] * P2 % mod + s[i - 1];
+            h4[n - i + 1] %= mod;
+        }
     }
-}
+    // l, r下标从1开始，op为0表示[l, r]的hash值，为1表示将字符串翻转后[l, r]的hash值
+    std::pair<ui64, i64> get(int l, int r, int op = 0) {
+        ui64 v1 = h1[r] - h1[l - 1] * p1[r - l + 1];
+        i64 v3 = (h3[r] - h3[l - 1] * p2[r - l + 1] % mod + mod) % mod;
+        int tl = n - r + 1, tr = n - l + 1;
+        ui64 v2 = h2[tr] - h2[tl - 1] * p1[tr - tl + 1];
+        i64 v4 = (h4[tr] - h4[tl - 1] * p2[tr - tl + 1] % mod + mod) % mod;
+        if (!op) {
+            return std::make_pair(v1, v3);
+        }
+        return std::make_pair(v2, v4);
+    }
+};
 ```
 
 ### Trie树
