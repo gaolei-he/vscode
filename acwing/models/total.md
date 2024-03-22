@@ -86,8 +86,8 @@ vector<int> add(vector<int> &A, vector<int> &B)
 ### 快速幂
 
 ```cpp
-#define ll long long
-ll quick_pow(ll a,ll k,ll p)
+using i64 = long long;
+i64 quick_pow(i64 a,i64 k,i64 p)
 {
     ll res=1%p;
     while(k)
@@ -98,7 +98,7 @@ ll quick_pow(ll a,ll k,ll p)
     }
     return res;
 }
-vector<vector<int>> mul(vector<vector<int>> a, vector<vector<int>> b, int mod)
+vector<vector<int>> mul(vector<vector<int>>& a, vector<vector<int>>& b, int mod)
 {
     int n = a.size();
     vector<vector<int>> res(n, vector<int>(n));
@@ -108,7 +108,7 @@ vector<vector<int>> mul(vector<vector<int>> a, vector<vector<int>> b, int mod)
                 res[i][j] = (res[i][j] + a[i][k] * b[k][j]) % mod;
     return res;
 }
-vector<vector<int>> qp(vector<vector<int>> a, int b, int mod)
+vector<vector<int>> qp(vector<vector<int>>& a, int b, int mod)
 {
     int n = a.size();
     vector<vector<int>> res(n, vector<int>(n));
