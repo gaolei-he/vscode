@@ -1,0 +1,23 @@
+14
+/cab
+/cc/cd
+/ab
+/bd/bc/acd
+/d/c/c
+/da/c
+/cc
+/aa/baa/dad
+/a/ad/cd
+/aa/cb/dcc
+/c
+/dad/adc
+/cbc/c/b
+/dac/ab/ab
+7
+ls
+pwd
+ls
+ls
+cd .
+pwd
+pwd

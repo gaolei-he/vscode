@@ -1,0 +1,18 @@
+8
+/dac
+/cd/da
+/c/daa/a
+/abd/baa
+/bd/a/cb
+/c/aa/c
+/ab/c
+/bb/db
+8
+ls
+ls
+cd .
+pwd
+cd ..
+cd ..
+cd ..
+ls

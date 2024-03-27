@@ -5,6 +5,13 @@ class MyInt {
 
    public:
     MyInt(int n) { nVal = n; }
+    MyInt& operator-(int val) {
+        this->nVal -= val;
+        return *this;
+    }
+    operator int() {
+        return this->nVal;
+    }
     // 在此处补充你的代码
 };
 int Inc(int n) { return n + 1; }
