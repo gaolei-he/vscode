@@ -603,6 +603,24 @@ int main()
 ### 树状数组
 
 ```cpp
+const int N = 1e5+10;
+int tr[N];
+void add(int x, int c)
+{
+    for(int i=x;i<=n;i+=lowbit(i)) tr[i] += c;
+}
+char str[20];
+int sum(int x)
+{ 
+    int res = 0;
+    for(int i=x;i;i-=lowbit(i)) res += tr[i];
+    return res;
+}
+```
+
+### 树状数组维护树
+
+```cpp
 /*
 给定一棵树，实现两种操作
 1. 给定一个节点x，和一个值val，将以x为根的子树中的所有节点的权值加上val
@@ -613,6 +631,10 @@ class FenwickTree {
     std::vector<int> tr;
     std::vector<int> depth;
     int timestamp = 0;
+    // record.first 表示节点ver的dfs序的起始位置，record.second表示节点ver的dfs序的终止位置
+    // 使得[record.first, record.second]区间内的所有节点都是ver的儿子
+    // 基于此，借助树状数组的性质，可以每次更新一个节点的所有儿子的权值（借助差分，单点修改）
+    // 或者求一个节点到根节点的路径上所有节点的权值之和（区间求和，即差分数组的和，表示节点权值）
     std::vector<std::pair<int, int>> record;
 
    public:
@@ -662,21 +684,6 @@ class FenwickTree {
         }
     }
 };
-
-// ------
-const int N = 1e5+10;
-int tr[N];
-void add(int x, int c)
-{
-    for(int i=x;i<=n;i+=lowbit(i)) tr[i] += c;
-}
-char str[20];
-int sum(int x)
-{ 
-    int res = 0;
-    for(int i=x;i;i-=lowbit(i)) res += tr[i];
-    return res;
-}
 ```
 
 ### 线段树

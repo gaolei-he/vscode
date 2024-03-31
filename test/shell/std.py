@@ -1,3 +1,12 @@
+'''
+以绝对路径的形式存储目录项 即map<string, set<string>> dic
+例如 /dir下有a,b两个文件夹 则dic['/dir'] = {'a', 'b'}
+读入目录过程中 以/分割路径 逐级存入dic
+
+执行命令过程中，维护当前绝对路径pwd，对于cd命令，注意特判
+
+'''
+
 n = int(input())
 dic = {}
 dic['/'] = set()
@@ -28,9 +37,10 @@ for i in range(m):
         elif dir == '..':
             if pwd != '/':
                 pwd = pwd[:pwd.rfind('/')]
+                if pwd == '':
+                    pwd = '/'
             continue
         if pwd != '/':
             pwd = pwd + '/' + dir
         else:
             pwd = pwd + dir
-gi

@@ -34,6 +34,7 @@ print(m)
 for i in range(m):
     op = randint(0, 2)
     data = ''
+    dir = ''
     if op == 0:
         print('pwd')
         data = 'pwd'
@@ -45,22 +46,30 @@ for i in range(m):
         op = randint(0, 2)
         if op == 0:
             print('cd .')
+            dir = '.'
         elif op == 1:
             print('cd ..')
+            dir = '..'
         else:
 
             ans = list(dic.get(pwd, set()))
-            ans.sort()
+            if len(ans) == 0:
+                print('cd .')
+                continue
             data = data + ans[randint(0, len(ans) - 1)]
             print(data)
+            if(data.strip() == 'cd'):
+                print(data, "fff", *ans)
+                exit(-1)
             dir = data[3:]
-            if dir == '.':
-                continue
-            elif dir == '..':
-                if pwd != '/':
-                    pwd = pwd[:pwd.rfind('/')]
-                continue
+        
+        if dir == '.':
+            continue
+        elif dir == '..':
             if pwd != '/':
-                pwd = pwd + '/' + dir
-            else:
-                pwd = pwd + dir
+                pwd = pwd[:pwd.rfind('/')]
+            continue
+        if pwd != '/':
+            pwd = pwd + '/' + dir
+        else:
+            pwd = pwd + dir

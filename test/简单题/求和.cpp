@@ -1,6 +1,10 @@
 #include <bits/stdc++.h>
 using i64 = long long;
 
+int lowbit(int x) {
+    return x & (-x);
+}
+
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
@@ -11,6 +15,14 @@ int main() {
     int op = 0;
     for(;op < (1 << 6); op++) {
         i64 v1 = 0, v2 = 0;
+        int cnt = 0, tmp = op;
+        while(tmp) {
+            tmp -= lowbit(tmp);
+            cnt += 1;
+        }
+        if(cnt != 3) {
+            continue;
+        }
         for(int i=0;i<6;i++) {
             if((op >> i) & 1) {
                 v1 += vec[i];

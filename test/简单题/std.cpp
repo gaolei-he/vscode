@@ -1,3 +1,12 @@
+/*
+https://codeforces.com/contest/1949/problem/I
+cf原，建无向图，对于任意两个相切的圆之间建一条边
+形成n个连通块，对于每个连通块，保证其是二分图，并且染色之后，黑点数量和白点数量不同
+简略说明：只有二分图，才可以保证改变圆半径后仍然保持相切，若黑白点数量相同，则半径之和不变
+证明略
+*/
+
+
 #include <bits/stdc++.h>
 using i64 = long long;
 int total1, total2;
@@ -64,7 +73,6 @@ int main() {
         st.insert(find(i));
     }
     for(auto x : st) {
-        // 奇数，并且不存在奇数环
         total1 = total2 = 0;
         if (dfs(x, 1) and total1 != total2) {
             std::cout << "YES\n";
