@@ -603,6 +603,67 @@ int main()
 ### 树状数组
 
 ```cpp
+/*
+给定一棵树，实现两种操作
+1. 给定一个节点x，和一个值val，将以x为根的子树中的所有节点的权值加上val
+2. 给定一个节点x，求x到根节点的路径上所有节点的权值之和
+*/
+class FenwickTree {
+   private:
+    std::vector<int> tr;
+    std::vector<int> depth;
+    int timestamp = 0;
+    std::vector<std::pair<int, int>> record;
+
+   public:
+    void add(int x, int val) {
+        for (; x < tr.size(); x += x & -x) {
+            tr[x] += val;
+        }
+    }
+    int sum(int x) {
+        int res = 0;
+        for (; x; x -= x & -x) {
+            res += tr[x];
+        }
+        return res;
+    }
+    // 节点ver所有儿子的权值都加上val，包括ver本身
+    void add_tree(int ver, int val) {
+        add(record[ver].first, val);
+        add(record[ver].second + 1, -val);
+    }
+    // 节点ver到根节点的路径上所有节点的权值之和，闭区间，即包含ver和根节点
+    int sum_tree(int ver) { return sum(record[ver].first); }
+    // g: 树的邻接表表示，下标从1开始，worth: 节点的权值，默认为1
+    FenwickTree(std::vector<std::vector<int>>& g, int n,
+                std::vector<int> worth = std::vector<int>(0)) {
+        if (worth.size() == 0) {
+            worth.assign(n + 1, 1);
+        }
+        std::function<void(int)> dfs = [&](int ver) {
+            timestamp++;
+            record[ver].first = timestamp;
+            for (auto x : g[ver]) {
+                depth[x] = depth[ver] + worth[x];
+                dfs(x);
+            }
+            record[ver].second = timestamp;
+        };
+
+        tr.resize(n + 1);
+        depth.resize(n + 1);
+        depth[1] = worth[1];
+        record.resize(n + 1);
+        dfs(1);
+        for (int i = 1; i <= n; i++) {
+            add(record[i].first, depth[record[i].first]);
+            add(record[i].first + 1, -depth[record[i].first]);
+        }
+    }
+};
+
+// ------
 const int N = 1e5+10;
 int tr[N];
 void add(int x, int c)
