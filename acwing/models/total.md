@@ -86,8 +86,8 @@ vector<int> add(vector<int> &A, vector<int> &B)
 ### 快速幂
 
 ```cpp
-#define ll long long
-ll quick_pow(ll a,ll k,ll p)
+using i64 = long long;
+i64 quick_pow(i64 a,i64 k,i64 p)
 {
     ll res=1%p;
     while(k)
@@ -98,7 +98,7 @@ ll quick_pow(ll a,ll k,ll p)
     }
     return res;
 }
-vector<vector<int>> mul(vector<vector<int>> a, vector<vector<int>> b, int mod)
+vector<vector<int>> mul(vector<vector<int>>& a, vector<vector<int>>& b, int mod)
 {
     int n = a.size();
     vector<vector<int>> res(n, vector<int>(n));
@@ -108,7 +108,7 @@ vector<vector<int>> mul(vector<vector<int>> a, vector<vector<int>> b, int mod)
                 res[i][j] = (res[i][j] + a[i][k] * b[k][j]) % mod;
     return res;
 }
-vector<vector<int>> qp(vector<vector<int>> a, int b, int mod)
+vector<vector<int>> qp(vector<vector<int>>& a, int b, int mod)
 {
     int n = a.size();
     vector<vector<int>> res(n, vector<int>(n));
@@ -616,6 +616,74 @@ int sum(int x)
     for(int i=x;i;i-=lowbit(i)) res += tr[i];
     return res;
 }
+```
+
+### 树状数组维护树
+
+```cpp
+/*
+给定一棵树，实现两种操作
+1. 给定一个节点x，和一个值val，将以x为根的子树中的所有节点的权值加上val
+2. 给定一个节点x，求x到根节点的路径上所有节点的权值之和
+*/
+class FenwickTree {
+   private:
+    std::vector<int> tr;
+    std::vector<int> depth;
+    int timestamp = 0;
+    // record.first 表示节点ver的dfs序的起始位置，record.second表示节点ver的dfs序的终止位置
+    // 使得[record.first, record.second]区间内的所有节点都是ver的儿子
+    // 基于此，借助树状数组的性质，可以每次更新一个节点的所有儿子的权值（借助差分，单点修改）
+    // 或者求一个节点到根节点的路径上所有节点的权值之和（区间求和，即差分数组的和，表示节点权值）
+    std::vector<std::pair<int, int>> record;
+
+   public:
+    void add(int x, int val) {
+        for (; x < tr.size(); x += x & -x) {
+            tr[x] += val;
+        }
+    }
+    int sum(int x) {
+        int res = 0;
+        for (; x; x -= x & -x) {
+            res += tr[x];
+        }
+        return res;
+    }
+    // 节点ver所有儿子的权值都加上val，包括ver本身
+    void add_tree(int ver, int val) {
+        add(record[ver].first, val);
+        add(record[ver].second + 1, -val);
+    }
+    // 节点ver到根节点的路径上所有节点的权值之和，闭区间，即包含ver和根节点
+    int sum_tree(int ver) { return sum(record[ver].first); }
+    // g: 树的邻接表表示，下标从1开始，worth: 节点的权值，默认为1
+    FenwickTree(std::vector<std::vector<int>>& g, int n,
+                std::vector<int> worth = std::vector<int>(0)) {
+        if (worth.size() == 0) {
+            worth.assign(n + 1, 1);
+        }
+        std::function<void(int)> dfs = [&](int ver) {
+            timestamp++;
+            record[ver].first = timestamp;
+            for (auto x : g[ver]) {
+                depth[x] = depth[ver] + worth[x];
+                dfs(x);
+            }
+            record[ver].second = timestamp;
+        };
+
+        tr.resize(n + 1);
+        depth.resize(n + 1);
+        depth[1] = worth[1];
+        record.resize(n + 1);
+        dfs(1);
+        for (int i = 1; i <= n; i++) {
+            add(record[i].first, depth[record[i].first]);
+            add(record[i].first + 1, -depth[record[i].first]);
+        }
+    }
+};
 ```
 
 ### 线段树
