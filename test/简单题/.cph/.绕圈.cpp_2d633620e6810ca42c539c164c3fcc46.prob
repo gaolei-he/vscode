@@ -1,1 +1,0 @@
-{"name":"Local: 绕圈","url":"/home/mechrevo/Documents/vscode/test/简单题/绕圈.cpp","tests":[{"id":1711541266556,"input":"7\n2 1\n2 2\n3 1\n3 2\n3 3\n5 5\n69 1337","output":""},{"id":1711541597273,"input":"1\n5 1000000000","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/test/简单题/绕圈.cpp","group":"local","local":true}

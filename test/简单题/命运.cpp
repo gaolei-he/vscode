@@ -34,7 +34,7 @@ int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
-    for (int i = 2; i <= 10000000; i++) {
+    for (int i = 2; i <= 100000000; i++) {
         buffer.push(i);
     }
     std::cout << "buffer input complete" << std::endl;

@@ -1,1 +1,0 @@
-{"name":"Local: tester","url":"/home/mechrevo/Documents/vscode/test/tmp/tester.cpp","tests":[{"id":1711368228982,"input":"1 1 1 1 1 5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/test/tmp/tester.cpp","group":"local","local":true}

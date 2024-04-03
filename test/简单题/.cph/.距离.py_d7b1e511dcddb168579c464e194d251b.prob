@@ -1,1 +1,0 @@
-{"name":"Local: 距离","url":"/home/mechrevo/Documents/vscode/test/简单题/距离.py","tests":[{"id":1711796516094,"input":"1\n4691 32373\n19802 26874 30364 32740 4725 16563","output":"82928.1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/test/简单题/距离.py","group":"local","local":true}
