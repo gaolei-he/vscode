@@ -8,6 +8,8 @@ std::map<std::string, int> dic{
     {"=", 18},    {"#", 19},    {"<", 20},  {">", 21},   {":=", 22},
     {"(", 23},    {")", 24},    {",", 25},  {".", 26},   {";", 27}};
 std::set<char> st{'\t', ' ', '\n'};
+
+// 从标准输入读取，每次调用返回对应编号和内容
 std::pair<int, std::string> solve() {
     char op;
     while (st.count(op = getchar()))
@@ -75,8 +77,10 @@ std::string pre_process() {
     return str;
 }
 int main() {
+    std::string str = std::move(pre_process());
+    std::cout << str;
     std::pair<int, std::string> res;
-    while(!(res = solve()).second.empty()) {
+    while (!(res = solve()).second.empty()) {
         std::cout << res.first << " " << res.second << "\n";
     }
     solve();
