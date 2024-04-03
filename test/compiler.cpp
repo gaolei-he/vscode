@@ -8,6 +8,8 @@ std::map<std::string, int> dic{
     {"=", 18},    {"#", 19},    {"<", 20},  {">", 21},   {":=", 22},
     {"(", 23},    {")", 24},    {",", 25},  {".", 26},   {";", 27}};
 std::set<char> st{'\t', ' ', '\n'};
+
+// 从标准输入读取，每次调用返回对应编号和内容
 std::pair<int, std::string> solve() {
     char op;
     while (st.count(op = getchar()))
@@ -42,9 +44,43 @@ std::pair<int, std::string> solve() {
         }
     }
 }
+// 返回预处理之后的文本
+std::string pre_process() {
+    std::string str;
+    char lst, op = '\0';
+    std::cin.get(lst);
+    while (std::cin.get(op)) {
+        if (lst == '/' and op == '/') {
+            while (std::cin.get() != '\n')
+                ;
+            lst = '\0';
+            continue;
+        } else if (lst == '(' and op == '*') {
+            lst = '\0';
+            while (std::cin.get(op)) {
+                if (lst == '*' and op == ')') {
+                    break;
+                }
+                lst = op;
+            }
+            lst = '\0';
+            continue;
+        }
+        if (lst != '\0') {
+            str.push_back(lst);
+        }
+        lst = op;
+    }
+    if (lst != '\0') {
+        str.push_back(lst);
+    }
+    return str;
+}
 int main() {
+    std::string str = std::move(pre_process());
+    std::cout << str;
     std::pair<int, std::string> res;
-    while(!(res = solve()).second.empty()) {
+    while (!(res = solve()).second.empty()) {
         std::cout << res.first << " " << res.second << "\n";
     }
     solve();
