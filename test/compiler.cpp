@@ -83,7 +83,6 @@ int main() {
     while (!(res = solve()).second.empty()) {
         std::cout << res.first << " " << res.second << "\n";
     }
-    solve();
     return 0;
 }
 
