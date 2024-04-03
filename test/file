@@ -1,81 +1,22 @@
-7 const
-12 limit
-18 =
-13 10
-27 ;
-8 var
-12 n
-25 ,
-12 f
-25 ,
-12 test
-25 ,
-12 t1
-25 ,
-12 t2
-27 ;
-1 begin
-12 n
-22 :=
-13 0
-27 ;
-12 f
-22 :=
-13 1
-27 ;
-5 while
-12 n
-19 #
-12 limit
-6 do
-1 begin
-12 n
-22 :=
-12 n
-14 +
-13 1
-27 ;
-12 f
-22 :=
-12 f
-16 *
-12 n
-27 ;
-2 end
-27 ;
-12 test
-22 :=
-13 1
-14 +
-13 2
-15 -
-13 3
-16 *
-13 4
-17 /
-23 (
-13 5
-15 -
-13 6
-24 )
-14 +
-15 -
-13 7
-27 ;
-12 t1
-22 :=
-12 test
-16 *
-13 2
-27 ;
-12 t2
-22 :=
-12 t1
-14 +
-12 test
-27 ;
-9 call
-12 print
-27 ;
-2 end
-26 .
+// PL/0 demo
+
+(*
+	This is a multi-line
+	comment
+*)
+
+const limit=10;
+var n, f, test, t1, t2;
+begin
+     n := 0;
+     f := 1;
+     while n # limit do
+     begin
+          n := n + 1;
+          f := f * n;
+     end;
+     test := 1+2-3*4/(5-6)+-7;
+	t1:=test*2;
+	t2:=t1+test;
+     call print;	// print all var
+end.
