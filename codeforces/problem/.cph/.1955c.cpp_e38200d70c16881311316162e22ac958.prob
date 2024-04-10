@@ -1,0 +1,1 @@
+{"name":"Local: 1955c","url":"/home/mechrevo/Documents/vscode/codeforces/problem/1955c.cpp","tests":[{"id":1712633352412,"input":"6\n4 5\n1 2 4 3\n4 6\n1 2 4 3\n5 20\n2 7 1 8 2\n2 2\n3 2\n2 15\n1 5\n2 7\n5 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/codeforces/problem/1955c.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: 1955a","url":"/home/mechrevo/Documents/vscode/codeforces/problem/1955a.py","tests":[{"id":1712632408526,"input":"4\n2 5 9\n3 5 9\n3 5 11\n4 5 11\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/codeforces/problem/1955a.py","group":"local","local":true}

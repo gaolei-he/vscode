@@ -1,0 +1,1 @@
+{"name":"Local: 1951b","url":"/home/mechrevo/Documents/vscode/codeforces/problem/1951b.cpp","tests":[{"id":1712457560509,"input":"3\n6 1\n12 10 14 11 8 3\n6 5\n7 2 727 10 12 13\n2 2\n1000000000 1\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/codeforces/problem/1951b.cpp","group":"local","local":true}
