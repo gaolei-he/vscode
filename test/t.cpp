@@ -1,10 +1,16 @@
+#include <thread>
 #include <iostream>
-
-int main() {
-    unsigned long long val = 1e9;
-    for(int i=1;i<=10;i++) {
-    val += 1000000000;
-    std::cout << val << std::endl;
+#include <vector>
+#include <chrono>
+#include <algorithm>
+void f() {
+    for(int i=0;i<10;i++) {
+        std::cout << i << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(2));
     }
+}
+int main() {
+    std::vector<int> vec;
+    std::lower_bound()
     return 0;
 }
