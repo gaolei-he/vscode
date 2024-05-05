@@ -1,0 +1,1 @@
+{"name":"Local: b","url":"/home/mechrevo/Documents/vscode/codeforces/edu_165/b.cpp","tests":[{"id":1714401954658,"input":"5\n10\n0000\n11000\n101011\n01101001\n","output":"2\n0\n9\n5\n11\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/codeforces/edu_165/b.cpp","group":"local","local":true}
