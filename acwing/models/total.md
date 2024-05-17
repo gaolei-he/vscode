@@ -5,6 +5,7 @@
 - [模板](#模板)
   - [目录](#目录)
   - [数学](#数学)
+    - [随机数](#随机数)
     - [二分](#二分)
     - [高精度加法](#高精度加法)
     - [快速幂](#快速幂)
@@ -35,6 +36,24 @@
     - [分组背包](#分组背包)
 
 ## 数学
+
+### 随机数
+
+```cpp
+#include <random>
+#include <iostream>
+
+int main() {
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(1, 100);
+    std::uniform_real_distribution<> dis2(1, 100);
+    std::cout << dis2(gen) << std::endl;
+    std::cout << dis(gen);
+    return 0;
+}
+```
 
 ### 二分
 

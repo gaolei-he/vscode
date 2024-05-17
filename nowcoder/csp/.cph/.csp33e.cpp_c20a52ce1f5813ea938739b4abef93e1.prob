@@ -1,0 +1,1 @@
+{"name":"Local: csp33e","url":"/home/mechrevo/Documents/vscode/nowcoder/csp/csp33e.cpp","tests":[{"id":1715222397316,"input":"4 6\n1 1 3\n100 0 200 300\n2 1\n2 4\n1 1\n2 4\n1 1\n1 1","output":"1\n3\n1 300\n2\n0 600\n0 600"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/mechrevo/Documents/vscode/nowcoder/csp/csp33e.cpp","group":"local","local":true}
