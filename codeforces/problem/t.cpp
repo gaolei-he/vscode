@@ -1,11 +1,18 @@
 #include <functional>
+#include <iostream>
+#include <vector>
 
 int main() {
-    std::function<void(int)> dfs = [&](int x) {
-        dfs(x);
-    };
-    auto dfs = [&](auto dfs){
-        dfs();
-    };
-    return 0;
+  std::vector<int> vec(10, 1);
+  vec.assign(6, 2);
+  for (auto x : vec) {
+    std::cout << x << " ";
+  }
+  std::cout << "\n";
+  vec.resize(8, 3);
+  for (auto x : vec) {
+    std::cout << x << " ";
+  }
+  std::cout << "\n";
+  return 0;
 }
