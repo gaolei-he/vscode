@@ -1,12 +1,17 @@
-import threading
-from time import sleep
+from PIL import Image
 
-def f():
-    for i in range(10):
-        print(i)
-        sleep(1)
+img = Image.open('../file.jpg')
 
-for i in range(2):
-    thread = threading.Thread(target=f)
-    thread.start()
-sleep(3)
+if img.mode != "RGBA":
+    img = img.convert("RGBA")
+
+pixels = img.load()
+
+w, h = img.size
+for x in range(w):
+    for y in range(h):
+        r, g, b, a = pixels[x, y]
+        if r + b + g >= 750:
+            pixels[x, y] = (r, g, b, 0)
+
+img.save('../file1.png')
