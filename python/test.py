@@ -1,17 +1,28 @@
-from PIL import Image
+import matplotlib.pyplot as plt
+import numpy as np
 
-img = Image.open('../file.jpg')
+def draw_regular_polygon(num_sides, k):
+    # 生成角度
+    angles = np.linspace(0, 2 * np.pi, num_sides + 1)
 
-if img.mode != "RGBA":
-    img = img.convert("RGBA")
+    # 生成顶点坐标
+    x = np.cos(angles)
+    y = np.sin(angles)
 
-pixels = img.load()
+    # 绘制多边形
+    plt.figure()
+    plt.plot(x, y, 'bo-')  # 'bo-'表示蓝色圆点和线条
+    for i in range(num_sides):
+        tx, ty = [], []
+        tx.append(x[i])
+        tx.append(x[(i + k) % num_sides])
+        ty.append(y[i])
+        ty.append(y[(i + k) % num_sides])
+        plt.plot(tx, ty, 'r-')
+    plt.fill(x, y, alpha=0.2)  # 填充多边形，透明度为0.2
+    plt.gca().set_aspect('equal')  # 确保x和y轴的比例相同
+    plt.title(f'Regular Polygon with {num_sides} Sides')
+    plt.show()
 
-w, h = img.size
-for x in range(w):
-    for y in range(h):
-        r, g, b, a = pixels[x, y]
-        if r + b + g >= 750:
-            pixels[x, y] = (r, g, b, 0)
-
-img.save('../file1.png')
+# 调用函数绘制一个正五边形
+draw_regular_polygon(20, 9)

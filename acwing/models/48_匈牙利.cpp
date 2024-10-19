@@ -1,53 +1,53 @@
-//O(mn)
-#include <iostream>
-#include <cstring>
-using namespace std;
-const int N = 510, M = 1e5+10;
-int n1, n2, m;
-int h[N], e[M], ne[M], idx;
-int match[N];
-bool st[N];
-
-void add(int a, int b)
-{
-    e[idx] = b, ne[idx] = h[a], h[a] = idx ++;
-}
-
-bool find(int x)
-{
-    for(int i=h[x];~i;i=ne[i])
-    {
-        int j = e[i];
-        if(!st[j])
-        {
-            st[j] = true;
-            if(match[j] == 0 || find(match[j]))
-            {
-                match[j] = x;
-                return true;
-            }
+// O(nm) edge*point
+#include <bits/stdc++.h>
+#define int long long
+void solve() {
+    int n;
+    std::cin >> n;
+    std::vector<std::vector<int>> g(n + 1);
+    std::vector<int> match(n + 1);
+    for(int i=1;i<=n;i++) {
+        int k;
+        std::cin >> k;
+        while(k --) {
+            int x;
+            std::cin >> x;
+            g[i].push_back(x);
         }
     }
-    return false;
+    int res = 0;
+    std::vector<bool> vis(n + 1, false);
+    std::function<bool(int)> find = [&](int ver) {
+        for(auto x : g[ver]) {
+            if(!vis[x]) {
+                vis[x] = true;
+                if(match[x] == 0 || find(match[x])) {
+                    match[x] = ver;
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
+    for(int i=1;i<=n;i++) {
+        vis.assign(n + 1, false);
+        if(find(i)) {
+            res += 1;
+        }
+    }
+    if(res == n) {
+        std::cout << "Yes\n";
+    } else {
+        std::cout << "No\n" << n - res << "\n";
+    }
 }
 
-int main()
-{
-    scanf("%d %d %d", &n1, &n2, &m);
-    memset(h, -1, sizeof(h));
-    while (m--)
-    {
-        int a, b;
-        scanf("%d %d", &a, &b);
-        add(a, b);
-    }
-    int res = 0;
-    for(int i=1;i<=n1;i++)
-    {
-        memset(st, false, sizeof st);
-        if(find(i)) res ++;
-    }
-    cout << res << endl;
-    
+signed main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(0);
+    std::cout.tie(0);
+
+    solve();
+
     return 0;
 }

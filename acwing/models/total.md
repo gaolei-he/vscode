@@ -4,6 +4,7 @@
 
 - [模板](#模板)
   - [目录](#目录)
+  - [对拍](#对拍)
   - [数学](#数学)
     - [随机数](#随机数)
     - [二分](#二分)
@@ -34,6 +35,68 @@
     - [多重背包](#多重背包)
     - [多重背包二进制优化](#多重背包二进制优化)
     - [分组背包](#分组背包)
+
+## 对拍
+
+```bash
+#!/bin/bash
+
+# clear executable files when Ctrl+C
+trap "rm *.out; exit " SIGINT
+
+# get source code and data generator
+read -p "std source code: " src
+read -p "your source code: " your
+read -p "data generator: " data
+g++ $src -o std.out
+g++ $your -o your.out
+
+counter=0
+function output() {
+    ((counter++))
+    echo "Test case: $counter"
+    cat input.txt
+    printf "\n============\n"
+    echo "Standard output:"
+    cat std.txt
+    printf "\n============\n"
+    echo "Your output:"
+    cat your.txt
+    printf "\n============\n"
+}
+
+function check() {
+    sleep 0.2
+    if diff std.txt your.txt >/dev/null; then
+        echo "AC"
+        clear
+    else
+        echo "WA"
+        exit
+    fi
+}
+function run() {
+    ./std.out <input.txt >std.txt
+    ./your.out <input.txt >your.txt
+}
+function generate() {
+    if [[ $data == *.py ]]; then
+        python3 $data >input.txt
+    elif [[ $data == *.cpp ]]; then
+        g++ $data -o data.out
+        ./data.out >input.txt
+    fi
+}
+while true; do
+    generate
+    run
+    output
+    check
+done
+
+rm *.out
+
+```
 
 ## 数学
 
@@ -423,6 +486,61 @@ void floyd()
                 d[i][j] = min(d[i][j], d[i][k]+d[k][j]);
 
 }
+```
+
+### 强联通分量
+
+```cpp
+std::vector<int> dfn, low, id;// id 节点i所在SCC编号
+std::vector<std::vector<int>> g;
+std::stack<int> stk;
+std::vector<bool> in_stk;
+int timestamp = 0, scc_cnt = 0;
+void tarjan(int u) {
+    dfn[u] = low[u] = ++ timestamp;
+    stk.push(u), in_stk[u] = true;
+    for(auto x : g[u]) {
+        if(!dfn[x]) {
+            tarjan(x);
+            low[u] = std::min(low[u], low[x]);
+        } else if(in_stk[x]) {
+            low[u] = std::min(low[u], dfn[x]);
+        }
+    }
+
+    if(dfn[u] == low[u]) {
+        int y;
+        ++ scc_cnt;
+        do {
+            y = stk.top();
+            stk.pop();
+            in_stk[y] = false;
+            id[y] = scc_cnt;
+        } while(y != u);
+    }
+}
+```
+
+### 割边
+
+```cpp
+std::vector<int> low(n + 1), dfn(n + 1), fa(n + 1);
+int cnt = 0;
+std::function<void(int, int)> dfs = [&](int u, int f = -1) -> void {
+    fa[u] = f;
+    low[u] = dfn[u] = ++cnt;
+    for (auto it : g[u]) {
+        if (!dfn[it]) {
+            dfs(it, u);
+            low[u] = std::min(low[u], low[it]);
+            if (low[it] > dfn[u]) {
+                // u -> it 是割边
+            }
+        } else if (dfn[it] < dfn[u] && it != fa[u]) {
+            low[u] = std::min(low[u], dfn[it]);
+        }
+    }
+};
 ```
 
 ## 数据结构
